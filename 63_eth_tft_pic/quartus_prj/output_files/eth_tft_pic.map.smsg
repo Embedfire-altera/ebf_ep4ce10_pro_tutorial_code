@@ -1,0 +1,14 @@
+Info (10281): Verilog HDL Declaration information at ip_send.v(33): object "send_data" differs only in case from object "SEND_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_send.v(52): object "PACKET_HEAD" differs only in case from object "packet_head" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_send.v(53): object "ETH_HEAD" differs only in case from object "eth_head" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_send.v(54): object "IP_UDP_HEAD" differs only in case from object "ip_udp_head" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_send.v(51): object "CHECK_SUM" differs only in case from object "check_sum" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_receive.v(32): object "rec_data" differs only in case from object "REC_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at ip_receive.v(33): object "rec_end" differs only in case from object "REC_END" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_write.v(27): object "wr_data" differs only in case from object "WR_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_write.v(31): object "wr_end" differs only in case from object "WR_END" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_read.v(27): object "rd_data" differs only in case from object "RD_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_read.v(31): object "rd_end" differs only in case from object "RD_END" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_init.v(30): object "init_end" differs only in case from object "INIT_END" in the same scope
+Warning (10273): Verilog HDL warning at sdram_arbit.v(176): extended using "x" or "z"
+Info (10281): Verilog HDL Declaration information at sdram_a_ref.v(32): object "aref_end" differs only in case from object "AREF_END" in the same scope

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Mar 25 17:31:35 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : ap3216c
+Top-level Entity Name : ap3216c
+Family : Cyclone IV E
+Total logic elements : 860
+    Total combinational functions : 819
+    Dedicated logic registers : 207
+Total registers : 207
+Total pins : 9
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

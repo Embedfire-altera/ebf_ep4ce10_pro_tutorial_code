@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Mar 27 15:53:00 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : audio_sd_play
+Top-level Entity Name : audio_sd_play
+Family : Cyclone IV E
+Total logic elements : 804
+    Total combinational functions : 617
+    Dedicated logic registers : 499
+Total registers : 499
+Total pins : 12
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

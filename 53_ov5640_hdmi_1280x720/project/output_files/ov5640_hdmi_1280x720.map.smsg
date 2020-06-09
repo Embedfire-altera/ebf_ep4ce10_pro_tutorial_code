@@ -1,0 +1,10 @@
+Info (10281): Verilog HDL Declaration information at sdram_write.v(27): object "wr_data" differs only in case from object "WR_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_write.v(31): object "wr_end" differs only in case from object "WR_END" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_read.v(27): object "rd_data" differs only in case from object "RD_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_read.v(31): object "rd_end" differs only in case from object "RD_END" in the same scope
+Info (10281): Verilog HDL Declaration information at sdram_init.v(30): object "init_end" differs only in case from object "INIT_END" in the same scope
+Warning (10273): Verilog HDL warning at sdram_arbit.v(176): extended using "x" or "z"
+Info (10281): Verilog HDL Declaration information at sdram_a_ref.v(32): object "aref_end" differs only in case from object "AREF_END" in the same scope
+Info (10281): Verilog HDL Declaration information at ov5640_cfg.v(36): object "REG_NUM" differs only in case from object "reg_num" in the same scope
+Info (10281): Verilog HDL Declaration information at i2c_ctrl.v(34): object "wr_data" differs only in case from object "WR_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at i2c_ctrl.v(38): object "rd_data" differs only in case from object "RD_DATA" in the same scope

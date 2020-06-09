@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at flash_seq_wr_ctrl.v(43): object "ADDR" differs only in case from object "addr" in the same scope

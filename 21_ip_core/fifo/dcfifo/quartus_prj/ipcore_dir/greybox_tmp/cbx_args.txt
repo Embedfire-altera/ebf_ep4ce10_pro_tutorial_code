@@ -1,0 +1,26 @@
+INTENDED_DEVICE_FAMILY="Cyclone IV E"
+LPM_NUMWORDS=256
+LPM_SHOWAHEAD=OFF
+LPM_TYPE=dcfifo_mixed_widths
+LPM_WIDTH=8
+LPM_WIDTHU=8
+LPM_WIDTHU_R=7
+LPM_WIDTH_R=16
+OVERFLOW_CHECKING=ON
+RDSYNC_DELAYPIPE=4
+UNDERFLOW_CHECKING=ON
+USE_EAB=ON
+WRSYNC_DELAYPIPE=4
+DEVICE_FAMILY="Cyclone IV E"
+data
+rdclk
+rdreq
+wrclk
+wrreq
+q
+rdempty
+rdfull
+rdusedw
+wrempty
+wrfull
+wrusedw

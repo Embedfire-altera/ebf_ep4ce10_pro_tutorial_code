@@ -1,0 +1,113 @@
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.0 Build 156 04/24/2013 SJ Full Version
+# Date created = 17:53:22  March 26, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		spi_flash_pp_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE10F17C8
+set_global_assignment -name TOP_LEVEL_ENTITY spi_flash_pp
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:53:22  MARCH 26, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_flash_pp_ctrl -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_spi_flash_pp -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_spi_flash_pp -section_id tb_spi_flash_pp
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+
+set_location_assignment PIN_E1 -to sys_clk
+set_location_assignment PIN_M15 -to sys_rst_n
+set_location_assignment PIN_M2 -to pi_key
+
+set_location_assignment PIN_H1 -to sck
+set_location_assignment PIN_C1 -to mosi
+
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_flash_pp_ctrl -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_flash_pp_ctrl -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_spi_flash_pp.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/acdc_check.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/initmemory.txt -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/internal_logic.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/M25p16.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/parameter.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/memory_access.v -section_id tb_spi_flash_pp
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_flash_pp_ctrl.v -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/acdc_check.v -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/initmemory.txt -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/internal_logic.v -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/M25p16.v -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/memory_access.v -section_id tb_flash_pp_ctrl
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/parameter.v -section_id tb_flash_pp_ctrl
+set_location_assignment PIN_D2 -to cs_n
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SLD_FILE "F:/GitLib/Altera/EP4CE10F17C8/ZT_Pro/A/4_base_code/36_spi_flash/spi_flash_write/spi_flash_pp/quartus_prj/output_files/stp1_auto_stripped.stp"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VERILOG_FILE ../sim/tb_spi_flash_pp.v
+set_global_assignment -name VERILOG_FILE ../sim/tb_flash_pp_ctrl.v
+set_global_assignment -name VERILOG_FILE ../rtl/key_filter.v
+set_global_assignment -name VERILOG_FILE ../rtl/spi_flash_pp.v
+set_global_assignment -name VERILOG_FILE ../rtl/flash_pp_ctrl.v

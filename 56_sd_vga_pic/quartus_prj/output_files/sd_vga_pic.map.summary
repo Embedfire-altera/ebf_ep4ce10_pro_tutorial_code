@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Mar 27 15:00:49 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : sd_vga_pic
+Top-level Entity Name : sd_vga_pic
+Family : Cyclone IV E
+Total logic elements : 1,228
+    Total combinational functions : 1,064
+    Dedicated logic registers : 722
+Total registers : 722
+Total pins : 63
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

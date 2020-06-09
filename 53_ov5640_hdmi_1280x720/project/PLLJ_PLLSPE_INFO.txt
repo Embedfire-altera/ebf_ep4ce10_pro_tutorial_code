@@ -1,0 +1,10 @@
+PLL_Name	clk_gen:clk_gen_inst|altpll:altpll_component|clk_gen_altpll:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	clk_hdmi:clk_hdmi_inst|altpll:altpll_component|clk_hdmi_altpll:auto_generated|pll1
+PLLJITTER	43
+PLLSPEmax	84
+PLLSPEmin	-53
+

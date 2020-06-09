@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar 26 21:51:48 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : ov7725_tft_320x240
+Top-level Entity Name : ov7725_tft_320x240
+Family : Cyclone IV E
+Total logic elements : 988
+    Total combinational functions : 864
+    Dedicated logic registers : 485
+Total registers : 485
+Total pins : 77
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

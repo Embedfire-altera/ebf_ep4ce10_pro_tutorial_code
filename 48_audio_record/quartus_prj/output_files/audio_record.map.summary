@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar 12 13:34:22 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : audio_record
+Top-level Entity Name : audio_record
+Family : Cyclone IV E
+Total logic elements : 1,032
+    Total combinational functions : 887
+    Dedicated logic registers : 619
+Total registers : 619
+Total pins : 50
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

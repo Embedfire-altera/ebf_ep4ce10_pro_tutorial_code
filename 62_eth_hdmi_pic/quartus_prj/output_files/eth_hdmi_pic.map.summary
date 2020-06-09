@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Apr 02 11:50:59 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : eth_hdmi_pic
+Top-level Entity Name : eth_hdmi_pic
+Family : Cyclone IV E
+Total logic elements : 1,353
+    Total combinational functions : 1,096
+    Dedicated logic registers : 769
+Total registers : 785
+Total pins : 57
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar 26 15:13:11 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : uart_sdram_hdmi_pic
+Top-level Entity Name : uart_sdram_hdmi_pic
+Family : Cyclone IV E
+Total logic elements : 981
+    Total combinational functions : 855
+    Dedicated logic registers : 551
+Total registers : 567
+Total pins : 52
+Total virtual pins : 0
+Total memory bits : 24,576
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

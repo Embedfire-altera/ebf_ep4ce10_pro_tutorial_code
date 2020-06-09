@@ -1,0 +1,149 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'audio_bclk'
+Slack : -3.656
+TNS   : -132.837
+
+Type  : Slow 1200mV 85C Model Setup 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -1.789
+TNS   : -48.176
+
+Type  : Slow 1200mV 85C Model Setup 'sys_clk'
+Slack : -0.079
+TNS   : -0.079
+
+Type  : Slow 1200mV 85C Model Hold 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -0.792
+TNS   : -5.386
+
+Type  : Slow 1200mV 85C Model Hold 'sys_clk'
+Slack : -0.088
+TNS   : -0.088
+
+Type  : Slow 1200mV 85C Model Hold 'audio_bclk'
+Slack : 0.453
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : -4.219
+TNS   : -4.219
+
+Type  : Slow 1200mV 85C Model Removal 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 2.984
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'audio_bclk'
+Slack : -3.000
+TNS   : -120.473
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -1.487
+TNS   : -50.558
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 0.478
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : 9.785
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'audio_bclk'
+Slack : -3.363
+TNS   : -119.070
+
+Type  : Slow 1200mV 0C Model Setup 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -1.537
+TNS   : -41.370
+
+Type  : Slow 1200mV 0C Model Setup 'sys_clk'
+Slack : -0.066
+TNS   : -0.066
+
+Type  : Slow 1200mV 0C Model Hold 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -0.745
+TNS   : -5.343
+
+Type  : Slow 1200mV 0C Model Hold 'sys_clk'
+Slack : -0.058
+TNS   : -0.058
+
+Type  : Slow 1200mV 0C Model Hold 'audio_bclk'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : -3.836
+TNS   : -3.836
+
+Type  : Slow 1200mV 0C Model Removal 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 2.735
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'audio_bclk'
+Slack : -3.000
+TNS   : -120.473
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -1.487
+TNS   : -50.558
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 0.474
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : 9.773
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'audio_bclk'
+Slack : -0.963
+TNS   : -15.480
+
+Type  : Fast 1200mV 0C Model Setup 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -0.234
+TNS   : -3.129
+
+Type  : Fast 1200mV 0C Model Setup 'sys_clk'
+Slack : 0.254
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -0.403
+TNS   : -3.131
+
+Type  : Fast 1200mV 0C Model Hold 'sys_clk'
+Slack : -0.211
+TNS   : -0.211
+
+Type  : Fast 1200mV 0C Model Hold 'audio_bclk'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : -1.624
+TNS   : -1.624
+
+Type  : Fast 1200mV 0C Model Removal 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 1.669
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'audio_bclk'
+Slack : -3.000
+TNS   : -87.314
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
+Slack : -1.000
+TNS   : -34.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
+Slack : 0.473
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : 9.436
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,82 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Administrator/Desktop/sdram_ov5640_vga/sim_ov5640
+T_opt
+!s110 1557139186
+V@9A4TjVLH32Le1Do_@9S:2
+04 9 4 work tb_ov5640 fast 0
+=1-e0d55e4adb2d-5cd00ef2-2e4-3ef4
+o-quiet -auto_acc_if_foreign -work work +acc
+Z0 tCvgOpt 0
+n@_opt
+OL;O;10.5;63
+vov5640_iic
+Z1 !s110 1557139184
+!i10b 1
+!s100 NTKe<a5zJlWNDD[?c9hG?1
+I:V0eW1_:3`J2bmzEfGI8Z3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dE:/sources/ov5640_vga/sim
+w1503493130
+8../rtl/ov5640/ov5640_iic.v
+F../rtl/ov5640/ov5640_iic.v
+Z4 L0 24
+Z5 OL;L;10.5;63
+r1
+!s85 0
+31
+Z6 !s108 1557139184.000000
+!s107 ../rtl/ov5640/ov5640_iic.v|
+!s90 -reportprogress|300|../rtl/ov5640/ov5640_iic.v|
+!i113 0
+Z7 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R0
+vpower_ctrl
+R1
+!i10b 1
+!s100 jc:H99MnNcPkL=NZIeHDI3
+If1DP7<0iiR1`SDch5GiQd2
+R2
+R3
+w1503493173
+8../rtl/ov5640/power_ctrl.v
+F../rtl/ov5640/power_ctrl.v
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 ../rtl/ov5640/power_ctrl.v|
+!s90 -reportprogress|300|../rtl/ov5640/power_ctrl.v|
+!i113 0
+R7
+R0
+vtb_ov5640
+R1
+!i10b 1
+!s100 nER`MK3YnVjdCH25jH_>23
+ITgaOF8KSnLY[QGJDIQg_V2
+R2
+R3
+w1557139177
+8./tb_ov5640.v
+F./tb_ov5640.v
+L0 3
+R5
+r1
+!s85 0
+31
+R6
+!s107 ./tb_ov5640.v|
+!s90 -reportprogress|300|./tb_ov5640.v|
+!i113 0
+R7
+R0

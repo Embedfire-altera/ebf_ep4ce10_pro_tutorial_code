@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Mar 10 15:01:33 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : spi_flash_be
+Top-level Entity Name : spi_flash_be
+Family : Cyclone IV E
+Total logic elements : 69
+    Total combinational functions : 69
+    Dedicated logic registers : 41
+Total registers : 41
+Total pins : 6
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

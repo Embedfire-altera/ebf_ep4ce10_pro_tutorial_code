@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue Mar 10 16:40:24 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : spi_flash_seq_wr
+Top-level Entity Name : spi_flash_seq_wr
+Family : Cyclone IV E
+Device : EP4CE10F17C8
+Timing Models : Final
+Total logic elements : 186 / 10,320 ( 2 % )
+    Total combinational functions : 170 / 10,320 ( 2 % )
+    Dedicated logic registers : 129 / 10,320 ( 1 % )
+Total registers : 129
+Total pins : 7 / 180 ( 4 % )
+Total virtual pins : 0
+Total memory bits : 0 / 423,936 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

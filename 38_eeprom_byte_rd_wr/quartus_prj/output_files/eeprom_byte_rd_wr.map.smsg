@@ -1,0 +1,3 @@
+Info (10281): Verilog HDL Declaration information at i2c_rw_data.v(42): object "DATA_NUM" differs only in case from object "data_num" in the same scope
+Info (10281): Verilog HDL Declaration information at i2c_ctrl.v(34): object "wr_data" differs only in case from object "WR_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at i2c_ctrl.v(38): object "rd_data" differs only in case from object "RD_DATA" in the same scope

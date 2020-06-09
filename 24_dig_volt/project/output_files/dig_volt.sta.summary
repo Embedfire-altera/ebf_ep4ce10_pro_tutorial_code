@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'adc:adc_inst|clk_sample'
+Slack : -96.036
+TNS   : -1517.452
+
+Type  : Slow 1200mV 85C Model Setup 'sys_clk'
+Slack : -32.454
+TNS   : -519.588
+
+Type  : Slow 1200mV 85C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -2.091
+TNS   : -14.425
+
+Type  : Slow 1200mV 85C Model Hold 'sys_clk'
+Slack : -0.099
+TNS   : -0.185
+
+Type  : Slow 1200mV 85C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.452
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'adc:adc_inst|clk_sample'
+Slack : 0.453
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : -3.000
+TNS   : -83.298
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'adc:adc_inst|clk_sample'
+Slack : -1.487
+TNS   : -78.811
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -1.487
+TNS   : -19.331
+
+Type  : Slow 1200mV 0C Model Setup 'adc:adc_inst|clk_sample'
+Slack : -87.561
+TNS   : -1383.264
+
+Type  : Slow 1200mV 0C Model Setup 'sys_clk'
+Slack : -29.725
+TNS   : -472.161
+
+Type  : Slow 1200mV 0C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -1.953
+TNS   : -12.746
+
+Type  : Slow 1200mV 0C Model Hold 'sys_clk'
+Slack : -0.055
+TNS   : -0.109
+
+Type  : Slow 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'adc:adc_inst|clk_sample'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -3.000
+TNS   : -83.298
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'adc:adc_inst|clk_sample'
+Slack : -1.487
+TNS   : -78.811
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -1.487
+TNS   : -19.331
+
+Type  : Fast 1200mV 0C Model Setup 'adc:adc_inst|clk_sample'
+Slack : -40.839
+TNS   : -625.629
+
+Type  : Fast 1200mV 0C Model Setup 'sys_clk'
+Slack : -13.305
+TNS   : -195.925
+
+Type  : Fast 1200mV 0C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -0.468
+TNS   : -1.405
+
+Type  : Fast 1200mV 0C Model Hold 'sys_clk'
+Slack : -0.222
+TNS   : -0.440
+
+Type  : Fast 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'adc:adc_inst|clk_sample'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -3.000
+TNS   : -60.566
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'adc:adc_inst|clk_sample'
+Slack : -1.000
+TNS   : -53.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : -1.000
+TNS   : -13.000
+
+------------------------------------------------------------

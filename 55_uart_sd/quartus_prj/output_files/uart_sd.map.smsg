@@ -1,0 +1,4 @@
+Info (10281): Verilog HDL Declaration information at sd_write.v(28): object "wr_data" differs only in case from object "WR_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sd_write.v(32): object "wr_busy" differs only in case from object "WR_BUSY" in the same scope
+Info (10281): Verilog HDL Declaration information at sd_read.v(31): object "rd_data" differs only in case from object "RD_DATA" in the same scope
+Info (10281): Verilog HDL Declaration information at sd_init.v(30): object "init_end" differs only in case from object "INIT_END" in the same scope

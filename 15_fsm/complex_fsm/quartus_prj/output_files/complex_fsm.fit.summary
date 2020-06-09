@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Mar 23 17:40:13 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : complex_fsm
+Top-level Entity Name : complex_fsm
+Family : Cyclone IV E
+Device : EP4CE10F17C8
+Timing Models : Final
+Total logic elements : 10 / 10,320 ( < 1 % )
+    Total combinational functions : 10 / 10,320 ( < 1 % )
+    Dedicated logic registers : 7 / 10,320 ( < 1 % )
+Total registers : 7
+Total pins : 6 / 180 ( 3 % )
+Total virtual pins : 0
+Total memory bits : 0 / 423,936 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

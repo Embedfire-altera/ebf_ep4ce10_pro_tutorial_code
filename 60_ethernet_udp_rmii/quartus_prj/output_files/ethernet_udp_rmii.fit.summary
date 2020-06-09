@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue May 12 11:04:44 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : ethernet_udp_rmii
+Top-level Entity Name : ethernet_udp_rmii
+Family : Cyclone IV E
+Device : EP4CE10F17C8
+Timing Models : Final
+Total logic elements : 1,016 / 10,320 ( 10 % )
+    Total combinational functions : 813 / 10,320 ( 8 % )
+    Dedicated logic registers : 540 / 10,320 ( 5 % )
+Total registers : 540
+Total pins : 9 / 180 ( 5 % )
+Total virtual pins : 0
+Total memory bits : 65,536 / 423,936 ( 15 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )
