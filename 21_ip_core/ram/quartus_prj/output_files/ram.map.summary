@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Tue Mar 24 15:38:36 2020
+Analysis & Synthesis Status : Successful - Wed Jun 10 14:33:12 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : ram
 Top-level Entity Name : ram
 Family : Cyclone IV E
-Total logic elements : 375
-    Total combinational functions : 373
+Total logic elements : 373
+    Total combinational functions : 370
     Dedicated logic registers : 131
 Total registers : 131
 Total pins : 8

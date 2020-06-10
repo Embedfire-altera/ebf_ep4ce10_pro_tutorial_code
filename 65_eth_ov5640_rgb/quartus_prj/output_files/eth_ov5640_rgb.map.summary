@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Mon May 18 10:10:54 2020
+Analysis & Synthesis Status : Successful - Tue Jun 09 17:53:58 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : eth_ov5640_rgb
 Top-level Entity Name : eth_ov5640_rgb
 Family : Cyclone IV E
-Total logic elements : 2,243
-    Total combinational functions : 1,988
-    Dedicated logic registers : 966
-Total registers : 966
+Total logic elements : 2,222
+    Total combinational functions : 1,967
+    Dedicated logic registers : 965
+Total registers : 965
 Total pins : 64
 Total virtual pins : 0
 Total memory bits : 65,536
