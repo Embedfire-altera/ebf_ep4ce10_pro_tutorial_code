@@ -65,8 +65,8 @@ parameter  BOARD_PORT   = 16'd1234;
 //PC机MAC地址
 parameter  DES_MAC   = 48'hff_ff_ff_ff_ff_ff;
 //PC机IP地址
-//parameter  DES_IP    = {8'd255,8'd255,8'd255,8'd255};
-parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd245};
+parameter  DES_IP    = {8'd255,8'd255,8'd255,8'd255};
+//parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd245};
 //PC机端口号
 parameter  DES_PORT   = 16'd1234;
 

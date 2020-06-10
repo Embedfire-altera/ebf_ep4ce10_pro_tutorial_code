@@ -35,14 +35,14 @@ module  image_format
 //****************** Parameter and Internal Signal *******************//
 //********************************************************************//
 //parameter     define
-parameter   HEAD        =   32'h59_48_5a_53     ,   //包头
+parameter   HEAD        =   32'h53_5a_48_59     ,   //包头
             ADDR        =   8'h00               ,   //设备地址
-            DATA_NUM    =   32'h00_00_00_11     ,   //包长
+            DATA_NUM    =   32'h11_00_00_00     ,   //包长
             CMD         =   8'h01               ,   //指令
             FORMAT      =   8'h04               ,   //图像格式(RGB565)
-            H_PIXEL     =   16'h02_80           ,   //行像素个数
-            V_PIXEL     =   16'h01_E0           ,   //场像素个数
-            CRC         =   16'h0B_7C           ;   //CRC-16校验
+            H_PIXEL     =   16'h80_02           ,   //行像素个数
+            V_PIXEL     =   16'hE0_01           ,   //场像素个数
+            CRC         =   16'h7C_0B           ;   //CRC-16校验
 
 parameter   IDLE        =   4'b0001,    //初始状态
             CMD_SEND    =   4'b0010,    //发送格式配置
