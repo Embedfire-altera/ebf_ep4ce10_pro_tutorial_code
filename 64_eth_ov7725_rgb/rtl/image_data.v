@@ -232,11 +232,11 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else    if(wr_fifo_en == 1'b0)
         if(state == FIRST_BAG)
             if(cnt_wr_data == 16'd0)
-                wr_fifo_data    <=  32'h59_48_5a_53;
+                wr_fifo_data    <=  32'h53_5a_48_59;
             else    if(cnt_wr_data == 16'd1)
-                wr_fifo_data    <=  32'h00_00_09_60;
+                wr_fifo_data    <=  32'h00_0C_60_09;
             else    if(cnt_wr_data == 16'd2)
-                wr_fifo_data    <=  {16'h0C_02,image_data5};
+                wr_fifo_data    <=  {16'h00_02,image_data5};
             else
                 wr_fifo_data    <=  {image_data6,image_data5};
         else    if(state == COM_BAG)

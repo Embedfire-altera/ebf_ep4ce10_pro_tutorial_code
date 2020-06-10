@@ -56,8 +56,6 @@ module eth_ov7725_rgb
 //parameter define
 parameter  H_PIXEL    = 24'd640       ;  //CMOS水平方向像素个数,用于设置SDRAM缓存大小
 parameter  V_PIXEL    = 24'd480       ;  //CMOS垂直方向像素个数,用于设置SDRAM缓存大小
-parameter   CNT_FRAME_WAIT  =   24'h0E_FF_FF;   //单帧图像等待时间计数
-parameter   CNT_IDLE_WAIT   =   24'h00_01_99;   //单包数据等待时间计数
 //板卡MAC地址
 parameter  BOARD_MAC = 48'h12_34_56_78_9A_BC;
 //板卡IP地址
@@ -67,8 +65,8 @@ parameter  BOARD_PORT   = 16'd1234;
 //PC机MAC地址
 parameter  DES_MAC   = 48'hff_ff_ff_ff_ff_ff;
 //PC机IP地址
-//parameter  DES_IP    = {8'd255,8'd255,8'd255,8'd255};
-parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd245};
+parameter  DES_IP    = {8'd255,8'd255,8'd255,8'd255};
+//parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd245};
 //PC机端口号
 parameter  DES_PORT   = 16'd1234;
 
@@ -109,7 +107,7 @@ reg             mii_clk         ;   //mii时钟
 //***************************** Main Code ****************************//
 //********************************************************************//
 assign  eth_tx_start    = (i_config_end == 1'b1) ? eth_tx_start_i : eth_tx_start_f;
-assign  eth_tx_data     = (i_config_end == 1'b1) ? eth_tx_data_i : eth_tx_data_f;
+assign  eth_tx_data     = (i_config_end == 1'b1) ? eth_tx_data_i  : eth_tx_data_f;
 assign  eth_tx_data_num = (i_config_end == 1'b1) ? eth_tx_data_num_i : eth_tx_data_num_f;
 
 //rst_n:复位信号(sys_rst_n & locked)
@@ -211,7 +209,7 @@ image_format    image_format_inst
     .sys_clk            (mii_clk                ),  //系统时钟
     .sys_rst_n          (rst_n && sys_init_done ),  //系统复位，低电平有效
     .eth_tx_req         (eth_tx_req && (~i_config_end)),//以太网数据请求信号
-    .eth_tx_done        (eth_tx_done && (~i_config_end)),  //单包以太网数据发送完成信号
+    .eth_tx_done        (eth_tx_done            ),  //单包以太网数据发送完成信号
 
     .eth_tx_start       (eth_tx_start_f         ),  //以太网发送数据开始信号
     .eth_tx_data        (eth_tx_data_f          ),  //以太网发送数据
@@ -223,17 +221,15 @@ image_format    image_format_inst
 image_data
 #(
     .H_PIXEL            (H_PIXEL            ),  //图像水平方向像素个数
-    .V_PIXEL            (V_PIXEL            ),  //图像竖直方向像素个数
-    .CNT_FRAME_WAIT     (CNT_FRAME_WAIT     ),  //帧间隔时钟周期计数
-    .CNT_IDLE_WAIT      (CNT_IDLE_WAIT      )   //数据包间隔时钟周期计数
+    .V_PIXEL            (V_PIXEL            )   //图像竖直方向像素个数
 )
 image_data_inst
 (
     .sys_clk            (mii_clk            ),  //系统时钟,频率25MHz
     .sys_rst_n          (rst_n & sys_init_done& i_config_end),  //复位信号,低电平有效eth_tx_end
     .image_data         (rd_data            ),  //自SDRAM中读取的16位图像数据
-    .eth_tx_req         (eth_tx_req && i_config_end),  //以太网发送数据请求信号
-    .eth_tx_done        (eth_tx_done && i_config_end),  //以太网发送数据完成信号
+    .eth_tx_req         (eth_tx_req         ),  //以太网发送数据请求信号
+    .eth_tx_done        (eth_tx_done        ),  //以太网发送数据完成信号
 
     .data_rd_req        (rd_en              ),  //图像数据请求信号
     .eth_tx_start       (eth_tx_start_i     ),  //以太网发送数据开始信号

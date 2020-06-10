@@ -1,14 +1,14 @@
-Fitter Status : Successful - Mon May 18 09:10:41 2020
+Fitter Status : Successful - Wed Jun 10 10:19:57 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : eth_ov7725_rgb
 Top-level Entity Name : eth_ov7725_rgb
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 1,829 / 10,320 ( 18 % )
-    Total combinational functions : 1,701 / 10,320 ( 16 % )
-    Dedicated logic registers : 958 / 10,320 ( 9 % )
-Total registers : 958
+Total logic elements : 1,794 / 10,320 ( 17 % )
+    Total combinational functions : 1,682 / 10,320 ( 16 % )
+    Dedicated logic registers : 957 / 10,320 ( 9 % )
+Total registers : 957
 Total pins : 64 / 180 ( 36 % )
 Total virtual pins : 0
 Total memory bits : 65,536 / 423,936 ( 15 % )

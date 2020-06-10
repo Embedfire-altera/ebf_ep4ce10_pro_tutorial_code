@@ -18,7 +18,7 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-# Date created = 11:44:14  May 09, 2020
+# Date created = 14:58:10  March 28, 2020
 #
 # -------------------------------------------------------------------------- #
 #
@@ -40,7 +40,7 @@ set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE10F17C8
 set_global_assignment -name TOP_LEVEL_ENTITY eth_ov7725_rgb
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:44:14  MAY 09, 2020"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:58:10  MARCH 28, 2020"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
@@ -54,12 +54,9 @@ set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 
 set_location_assignment PIN_E1 -to sys_clk
-set_location_assignment PIN_M15 -to sys_rst_n
+set_location_assignment PIN_M2 -to sys_rst_n
 
 set_location_assignment PIN_R4 -to sdram_clk
 set_location_assignment PIN_R9 -to sdram_cke
@@ -130,39 +127,42 @@ set_location_assignment PIN_G11 -to ov7725_pwdn
 set_location_assignment PIN_P15 -to sccb_scl
 set_location_assignment PIN_N14 -to sccb_sda
 
+#set_location_assignment PIN_M16 -to cam_pclk
+#set_location_assignment PIN_F16 -to cam_rst_n
+#set_location_assignment PIN_J13 -to cam_href
+#set_location_assignment PIN_C16 -to cam_vsync
+#set_location_assignment PIN_G11 -to cam_sgm_ctrl
+#set_location_assignment PIN_P15 -to cam_scl
+#set_location_assignment PIN_N14 -to cam_sda
+#set_location_assignment PIN_L13 -to cam_data[7]
+#set_location_assignment PIN_F13 -to cam_data[6]
+#set_location_assignment PIN_B16 -to cam_data[5]
+#set_location_assignment PIN_C15 -to cam_data[4]
+#set_location_assignment PIN_D16 -to cam_data[3]
+#set_location_assignment PIN_F14 -to cam_data[2]
+#set_location_assignment PIN_F15 -to cam_data[1]
+#set_location_assignment PIN_G15 -to cam_data[0]
 
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
 set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_image -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_image -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_image -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_image.v -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_FILE ../rtl/image_data.v -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_FILE ../rtl/image_format.v -section_id tb_image
-set_global_assignment -name EDA_TEST_BENCH_FILE ../rtl/eth_udp/ip_send.v -section_id tb_image
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/eth_udp_rmii.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/rmii_to_mii.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/mii_to_rmii.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/ip_send.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/ip_receive.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/eth_udp_mii.v
-set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/crc32_d4.v
-set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_top.v
-set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_data.v
-set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_cfg.v
-set_global_assignment -name VERILOG_FILE ../rtl/ov7725/i2c_ctrl.v
+set_global_assignment -name QIP_FILE ip_core/fifo_image/fifo_image.qip
+set_global_assignment -name VERILOG_FILE ../rtl/image_data.v
+set_global_assignment -name VERILOG_FILE ../rtl/image_format.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_write.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_top.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_read.v
@@ -171,12 +171,18 @@ set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_ctrl.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_arbit.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/sdram_a_ref.v
 set_global_assignment -name VERILOG_FILE ../rtl/sdram/fifo_ctrl.v
-set_global_assignment -name VERILOG_FILE ../rtl/image_format.v
-set_global_assignment -name VERILOG_FILE ../rtl/image_data.v
+set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_top.v
+set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_data.v
+set_global_assignment -name VERILOG_FILE ../rtl/ov7725/ov7725_cfg.v
+set_global_assignment -name VERILOG_FILE ../rtl/ov7725/i2c_ctrl.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/rmii_to_mii.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/mii_to_rmii.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/ip_send.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/ip_receive.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/eth_udp_mii.v
+set_global_assignment -name VERILOG_FILE ../rtl/eth_udp/crc32_d4.v
 set_global_assignment -name VERILOG_FILE ../rtl/eth_ov7725_rgb.v
 set_global_assignment -name QIP_FILE ip_core/fifo_data/fifo_data.qip
 set_global_assignment -name QIP_FILE ip_core/clk_gen/clk_gen.qip
-set_global_assignment -name QIP_FILE ip_core/fifo_image/fifo_image.qip
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

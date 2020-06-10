@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE10F17) Path("F:/GitLib/Altera/EP4CE10F17C8/base_code/01_test/eth/64_eth_ov7725_rgb/quartus_prj/output_files/") File("eth_ov7725_rgb.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE10F17) Path("F:/GitLib/Altera/EP4CE10F17C8/ZT_Pro/A/4_base_code/64_eth_ov7725_rgb/quartus_prj/output_files/") File("eth_ov7725_rgb.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
