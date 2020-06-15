@@ -18,14 +18,14 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-# Date created = 18:10:35  January 12, 2020
+# Date created = 10:22:11  June 06, 2020
 #
 # -------------------------------------------------------------------------- #
 #
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		top_key_ctrl_beep_assignment_defaults.qdf
+#		beep_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -38,9 +38,9 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE10F17C8
-set_global_assignment -name TOP_LEVEL_ENTITY top_key_ctrl_beep
+set_global_assignment -name TOP_LEVEL_ENTITY beep
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:10:35  JANUARY 12, 2020"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:22:10  JUNE 06, 2020"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
@@ -50,28 +50,24 @@ set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name VERILOG_FILE ../sim/tb_top_key_ctrl_beep.v
-set_global_assignment -name VERILOG_FILE ../rtl/top_key_ctrl_beep.v
-set_global_assignment -name VERILOG_FILE ../rtl/key_filter.v
-set_global_assignment -name VERILOG_FILE ../rtl/key_ctrl_beep.v
+set_global_assignment -name VERILOG_FILE ../rtl/beep.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_top_key_ctrl_beep -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME tb_top_key_ctrl_beep -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_top_key_ctrl_beep
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_top_key_ctrl_beep
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_top_key_ctrl_beep -section_id tb_top_key_ctrl_beep
-set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_top_key_ctrl_beep.v -section_id tb_top_key_ctrl_beep
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_J11 -to beep
-set_location_assignment PIN_M2 -to key_in
 set_location_assignment PIN_E1 -to sys_clk
 set_location_assignment PIN_M15 -to sys_rst_n
+set_location_assignment PIN_J11 -to beep
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_beep -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_beep -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_beep
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 ns" -section_id tb_beep
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_beep -section_id tb_beep
+set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_beep.v -section_id tb_beep
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
