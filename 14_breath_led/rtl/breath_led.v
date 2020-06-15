@@ -37,7 +37,7 @@ module  breath_led
 reg [5:0]   cnt_1us     ;
 reg [9:0]   cnt_1ms     ;
 reg [9:0]   cnt_1s      ;
-reg         cnt_1s_flag ;
+reg         cnt_1s_en   ;
 
 //********************************************************************/
 //***************************** Main Code ****************************//
@@ -70,20 +70,20 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else    if(cnt_1ms == CNT_1MS_MAX && cnt_1us == CNT_1US_MAX)
         cnt_1s <= cnt_1s + 1'b1;
 
-//cnt_1s_flag:1s计数器标志信号
+//cnt_1s_en:1s计数器使能信号
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        cnt_1s_flag <= 1'b0;
+        cnt_1s_en <= 1'b0;
     else    if(cnt_1s == CNT_1S_MAX && cnt_1ms == CNT_1MS_MAX 
                                             && cnt_1us == CNT_1US_MAX)
-        cnt_1s_flag <= ~cnt_1s_flag;
+        cnt_1s_en <= ~cnt_1s_en;
 
 //led_out:输出信号连接到外部的led灯
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         led_out <= 1'b0;
-    else    if((cnt_1s_flag == 1'b1 && cnt_1ms < cnt_1s) || 
-                            (cnt_1s_flag == 1'b0 && cnt_1ms > cnt_1s))
+    else    if((cnt_1s_en == 1'b1 && cnt_1ms < cnt_1s) || 
+                            (cnt_1s_en == 1'b0 && cnt_1ms > cnt_1s))
         led_out <= 1'b0;
     else
         led_out <= 1'b1;

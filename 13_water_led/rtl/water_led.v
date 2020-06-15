@@ -40,7 +40,7 @@ reg     [3:0]   led_out_reg ;
 //********************************************************************//
 //***************************** Main Code ****************************//
 //********************************************************************//
-//cnt:计数器计数1s
+//cnt:计数器计数500ms
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt <= 25'b0;
@@ -49,7 +49,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else
         cnt <= cnt + 1'b1;
 
-//cnt_flag:计数器计数满1s标志信号
+//cnt_flag:计数器计数满500ms标志信号
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt_flag <= 1'b0;
