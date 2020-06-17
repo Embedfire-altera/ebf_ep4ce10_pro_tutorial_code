@@ -11,7 +11,7 @@
 // Revision      : V1.0
 // Additional Comments:
 // 
-// 实验平台: 野火_征途Pro_FPGA开发板
+// 实验平台: 野火_征途系列FPGA开发板
 // 公司    :http://www.embedfire.com
 // 论坛    :http://www.firebbs.cn
 // 淘宝    :https://fire-stm32.taobao.com
@@ -51,7 +51,6 @@ reg         clk_1us     ;   //分频时钟，单位时钟1us
 reg [4:0]   cnt         ;   //分频计数器
 reg [2:0]   state       ;   //状态机状态
 reg [19:0]  cnt_1us     ;   //微秒计数器
-reg         cnt_1us_en  ;   //微秒计数器使能信号
 reg [3:0]   bit_cnt     ;   //字节计数器
 reg [15:0]  data_tmp    ;   //读取ds18b20的温度
 reg [19:0]  data        ;   //判断完正负后的温度
@@ -91,13 +90,12 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt_1us <=  20'b0;
-    else    if((state == S_WR_CMD || state == S_RD_CMD ||
-                           state == S_RD_TEMP) && cnt_1us == 20'd64)
+    else    if(((state==S_WR_CMD || state==S_RD_CMD || state==S_RD_TEMP)
+       && cnt_1us==20'd64) || ((state==S_INIT || state==S_INIT_AGAIN) &&
+       cnt_1us==20'd999) || (state==S_WAIT && cnt_1us==S_WAIT_MAX))
         cnt_1us <=  20'b0;
-    else    if(cnt_1us_en == 1'b1)
-        cnt_1us <=  cnt_1us +   1'b1;
     else
-        cnt_1us <=  20'b0;
+        cnt_1us <=  cnt_1us +   1'b1;
 
 //bit_cnt：bit计数器，写1bit或读1bit加1，一次写完之后清零
 always@(posedge clk_1us or  negedge sys_rst_n)
@@ -125,84 +123,42 @@ always@(posedge clk_1us or  negedge sys_rst_n)
 //状态跳转
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            cnt_1us_en  <=  1'b0;
-            state   <=  S_INIT;
-        end
+        state   <=  S_INIT;
     else
         case(state)
     //初始化最小时间为960us
        S_INIT:  //收到存在脉冲且时间需大于960us跳转
-        if(cnt_1us == 20'd999 && flag_pulse == 1'b1)
-            begin
+            if(cnt_1us == 20'd999  && flag_pulse == 1'b1 )
                 state   <=  S_WR_CMD;
-                cnt_1us_en  <=  1'b0;
-            end
-        else
-            begin
+            else
                 state   <=  S_INIT;
-                cnt_1us_en  <=  1'b1;
-            end
         S_WR_CMD:   //发送完跳过ROM和温度转换命令后跳转
-        if(bit_cnt == 4'd15 && cnt_1us == 20'd64 )
-            begin
+            if(bit_cnt == 4'd15 && cnt_1us == 20'd64 )
                 state   <=  S_WAIT;
-                cnt_1us_en <=  1'b0;
-            end
-        else
-            begin
+            else
                 state   <=  S_WR_CMD;
-                cnt_1us_en  <=  1'b1;
-            end
         S_WAIT: //等待750ms后跳转
             if(cnt_1us == S_WAIT_MAX)
-                begin
-                    state   <=  S_INIT_AGAIN;
-                    cnt_1us_en  <=  1'b0;
-                end
-            else
-                begin
-                    state   <=  S_WAIT;
-                    cnt_1us_en <=  1'b1;
-                end
-        S_INIT_AGAIN:   //再次初始化后跳转
-        if(cnt_1us == 20'd999 && flag_pulse == 1'b1)
-            begin
-                state   <=  S_RD_CMD;
-                cnt_1us_en  <=  1'b0;
-            end
-        else
-            begin
                 state   <=  S_INIT_AGAIN;
-                cnt_1us_en  <=  1'b1;
-            end
-        S_RD_CMD:   //发送完跳过ROM和读取温度命令后跳转
-        if(bit_cnt == 4'd15 && cnt_1us == 20'd64)
-            begin
-                state   <=  S_RD_TEMP;
-                cnt_1us_en <=  1'b0;
-            end
-        else
-            begin
+            else
+                state   <=  S_WAIT;
+        S_INIT_AGAIN:   //再次初始化后跳转
+            if(cnt_1us == 20'd999  && flag_pulse == 1'b1 )
                 state   <=  S_RD_CMD;
-                cnt_1us_en  <=  1'b1;
-            end
+            else
+                state   <=  S_INIT_AGAIN;
+        S_RD_CMD:   //发送完跳过ROM和读取温度命令后跳转
+            if(bit_cnt == 4'd15 && cnt_1us == 20'd64)
+                state   <=  S_RD_TEMP;
+            else
+                state   <=  S_RD_CMD;
         S_RD_TEMP:  //读完2字节的温度后跳转
             if(bit_cnt == 4'd15 && cnt_1us == 20'd64)
-                begin
-                    state   <=  S_INIT;
-                    cnt_1us_en  <=  1'b0;
-                end
-            else
-                begin
-                    state   <=  S_RD_TEMP;
-                    cnt_1us_en  <=  1'b1;
-                end
-        default:
-            begin
                 state   <=  S_INIT;
-                cnt_1us_en  <=  1'b0;
-            end
+            else
+                state   <=  S_RD_TEMP;
+        default:
+                state   <=  S_INIT;
         endcase
 
 //给各状态下的总线相应的时序
@@ -216,7 +172,7 @@ always@(posedge clk_1us or  negedge sys_rst_n)
         case(state)
     //初始化是最小480us低电平，然后释放总线
         S_INIT:
-            if(cnt_1us <= 20'd499)
+            if(cnt_1us < 20'd499)
                 begin
                     dq_out  <=  1'b0;
                     dq_en   <=  1'b1;
@@ -258,7 +214,7 @@ always@(posedge clk_1us or  negedge sys_rst_n)
             end
     //与第一次初始化时序一致
         S_INIT_AGAIN:
-            if(cnt_1us <= 20'd499)
+            if(cnt_1us < 20'd499)
                 begin
                     dq_out  <=  1'b0;
                     dq_en   <=  1'b1;
@@ -335,4 +291,4 @@ always@(posedge clk_1us or  negedge sys_rst_n)
             data    <=  ~data_tmp[10:0] + 1'b1;
         end
 
-endmodule
+endmodule 

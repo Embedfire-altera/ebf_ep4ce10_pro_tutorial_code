@@ -37,7 +37,7 @@ module  ap3216c_ctrl
 //****************** Parameter and Internal Signal *******************//
 //********************************************************************//
 
-//parameter define                  
+//parameter define
 parameter   S_WAIT_1MS      = 4'd1   ,   //上电等待1ms状态
             S_CFG           = 4'd2   ,   //系统配置状态
             S_WAIT_PS       = 4'd3   ,   //等待50ms
@@ -63,116 +63,77 @@ reg     [3:0]   state           ;   //状态机状态
 //******************************* Main Code **************************//
 //********************************************************************//
 
+//cnt_wait:当跳转到一个新的状态时计数器归0，其余时候让其一直加
+always@(posedge i2c_clk or  negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+        cnt_wait    <=  18'd0;
+    else    if((state==S_WAIT_1MS && cnt_wait==CNT_WAIT_1MS) || 
+              (state==S_CFG && i2c_end==1'b1) || (state==S_WAIT_PS
+              && cnt_wait==CNT_WAIT_PS) || (state==S_RD_PS_L4 && 
+              i2c_end==1'b1) || (state==S_RD_PS_H6 && i2c_end==1'b1) || 
+              (state==S_WAIT_ALS && cnt_wait==CNT_WAIT_ALS) || 
+              (state==S_RD_ALS_L8 && i2c_end==1'b1) || (state==S_RD_ALS_H8 
+              && i2c_end==1'b1))
+        cnt_wait    <=  18'd0;
+    else
+        cnt_wait    <=  cnt_wait + 1'b1;
+
 //状态机状态跳转
 always@(posedge i2c_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            state   <=  S_WAIT_1MS;
-            cnt_wait    <=  18'd0 ;
-        end
+        state   <=  S_WAIT_1MS;
 //当跳转到下一个状态时计数器归0，在当前状态每来一个时钟信号，计数器加一
     else    case(state)
     //上电等待1ms后跳转到系统配置状态
         S_WAIT_1MS:
             if(cnt_wait == CNT_WAIT_1MS)
-                begin
-                    state       <=  S_CFG;
-                    cnt_wait    <=  18'd0;
-                end
+                state       <=  S_CFG;
             else
-                begin
-                    state       <=  S_WAIT_1MS     ;
-                    cnt_wait    <=  cnt_wait + 1'b1;
-                end
+                state       <=  S_WAIT_1MS     ;
     //系统配置完成（i2c_end == 1）后，跳转到下一状态
         S_CFG:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  S_WAIT_PS;
-                    cnt_wait    <=  18'd0        ;
-                end
+                state       <=  S_WAIT_PS;
             else
-                begin
-                    state       <=  S_CFG     ;
-                    cnt_wait    <=  cnt_wait+1;
-                end
+                state       <=  S_CFG     ;
     //等待50ms后跳转
         S_WAIT_PS:
             if(cnt_wait == CNT_WAIT_PS)
-                begin
-                    state       <=  S_RD_PS_L4;
-                    cnt_wait    <=  18'd0     ;
-                end
+                state       <=  S_RD_PS_L4;
             else
-                begin
-                    state       <=  S_WAIT_PS  ;
-                    cnt_wait    <=  cnt_wait + 1'b1;
-                end
+                state       <=  S_WAIT_PS  ;
     //读取完ps低四位数据之后跳转
         S_RD_PS_L4:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  S_RD_PS_H6;
-                    cnt_wait    <=  18'd0     ;
-                end
+                state       <=  S_RD_PS_H6;
             else
-                begin
-                    state       <=  S_RD_PS_L4     ;
-                    cnt_wait    <=  cnt_wait + 1'b1;
-                end
+                state       <=  S_RD_PS_L4     ;
     //读取完PS高六位数据后跳转
         S_RD_PS_H6:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  S_WAIT_ALS;
-                    cnt_wait    <=  18'd0       ;
-                end
+                state       <=  S_WAIT_ALS;
             else
-                begin
-                    state       <=  S_RD_PS_H6     ;
-                    cnt_wait    <=  cnt_wait + 1'b1;
-                end
+                state       <=  S_RD_PS_H6     ;
     //等待200ms后跳转
         S_WAIT_ALS:
             if(cnt_wait == CNT_WAIT_ALS)
-                begin
-                    state       <=  S_RD_ALS_L8;
-                    cnt_wait    <=  18'd0      ;
-                end
+                state       <=  S_RD_ALS_L8;
             else
-                begin
-                    state       <=  S_WAIT_ALS    ;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  S_WAIT_ALS    ;
     //读取完als低八位数据后跳转
         S_RD_ALS_L8:
             if(i2c_end == 1'b1)
-                begin
-                    state   <=  S_RD_ALS_H8;
-                    cnt_wait    <=  18'd0  ;
-                end
+                state   <=  S_RD_ALS_H8;
             else
-                begin
-                    state       <=  S_RD_ALS_L8     ;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  S_RD_ALS_L8     ;
     //读取完als高八位数据后跳转到S_WAIT_PS状态开始下一轮数据的读取
         S_RD_ALS_H8:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  S_WAIT_PS;
-                    cnt_wait    <=  18'd0        ;
-                end
+                state       <=  S_WAIT_PS;
             else
-                begin
-                    state       <=  S_RD_ALS_H8     ;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  S_RD_ALS_H8     ;
         default:
-            begin
                 state       <=  S_WAIT_1MS;
-                cnt_wait    <=  18'd0     ;
-            end
     endcase
 
 //各状态下的信号赋值

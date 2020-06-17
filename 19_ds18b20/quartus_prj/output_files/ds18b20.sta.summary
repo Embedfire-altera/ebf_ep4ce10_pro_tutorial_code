@@ -3,32 +3,32 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'sys_clk'
-Slack : -54.256
-TNS   : -1246.456
+Slack : -56.803
+TNS   : -1274.298
 
 Type  : Slow 1200mV 85C Model Setup 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
-Slack : -5.084
-TNS   : -306.403
+Slack : -4.780
+TNS   : -311.046
 
 Type  : Slow 1200mV 85C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : -1.553
-TNS   : -11.832
+Slack : -1.840
+TNS   : -15.346
 
 Type  : Slow 1200mV 85C Model Hold 'sys_clk'
-Slack : -0.015
-TNS   : -0.015
+Slack : -0.154
+TNS   : -0.155
+
+Type  : Slow 1200mV 85C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.373
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : 0.434
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : 0.453
-TNS   : 0.000
-
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : -4.000
-TNS   : -160.798
+TNS   : -158.847
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sys_clk'
 Slack : -3.000
@@ -39,32 +39,32 @@ Slack : -1.487
 TNS   : -19.331
 
 Type  : Slow 1200mV 0C Model Setup 'sys_clk'
-Slack : -49.508
-TNS   : -1135.541
+Slack : -52.147
+TNS   : -1163.236
 
 Type  : Slow 1200mV 0C Model Setup 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
-Slack : -4.704
-TNS   : -283.301
+Slack : -4.458
+TNS   : -287.592
 
 Type  : Slow 1200mV 0C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : -1.438
-TNS   : -10.320
+Slack : -1.617
+TNS   : -13.645
 
 Type  : Slow 1200mV 0C Model Hold 'sys_clk'
-Slack : 0.007
+Slack : -0.118
+TNS   : -0.118
+
+Type  : Slow 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.291
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : 0.383
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : 0.402
-TNS   : 0.000
-
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : -4.000
-TNS   : -160.298
+TNS   : -158.811
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sys_clk'
 Slack : -3.000
@@ -75,36 +75,36 @@ Slack : -1.487
 TNS   : -19.331
 
 Type  : Fast 1200mV 0C Model Setup 'sys_clk'
-Slack : -22.571
-TNS   : -501.298
+Slack : -23.783
+TNS   : -517.318
 
 Type  : Fast 1200mV 0C Model Setup 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
-Slack : -1.577
-TNS   : -85.974
+Slack : -1.425
+TNS   : -89.097
 
 Type  : Fast 1200mV 0C Model Setup 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : -0.222
-TNS   : -0.570
+Slack : -0.212
+TNS   : -0.950
 
 Type  : Fast 1200mV 0C Model Hold 'sys_clk'
-Slack : -0.203
-TNS   : -0.320
+Slack : -0.185
+TNS   : -0.357
+
+Type  : Fast 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
+Slack : 0.163
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : 0.179
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
-Slack : 0.184
-TNS   : 0.000
-
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk'
 Slack : -3.000
-TNS   : -67.187
+TNS   : -67.212
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ds18b20_ctrl:ds18b20_ctrl_inst|clk_1us'
 Slack : -1.000
-TNS   : -74.000
+TNS   : -73.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'seg_595_dynamic:seg_595_dynamic_inst|seg_dynamic:seg_dynamic_inst|clk_1k'
 Slack : -1.000

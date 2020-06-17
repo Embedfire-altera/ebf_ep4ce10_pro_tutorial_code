@@ -50,7 +50,6 @@ reg         clk_1us     ;   //1us时钟，用于驱动整个模块
 reg [4:0]   cnt         ;   //时钟分频计数器
 reg [2:0]   state       ;   //状态机状态
 reg [20:0]  cnt_us      ;   //us计数器
-reg         cnt_us_en   ;   //us计数器使能信号
 reg         dht11_out   ;   //总线输出数据
 reg         dht11_en    ;   //总线输出使能信号
 reg [5:0]   bit_cnt     ;   //字节计数器
@@ -107,18 +106,6 @@ always@(posedge sys_clk or  negedge sys_rst_n)
     else
         clk_1us <=  clk_1us;
 
-//cnt_us：us时钟计数器，用于状态跳转
-always@(posedge clk_1us or  negedge sys_rst_n)
-    if(sys_rst_n == 1'b0)
-        cnt_us <=  21'b0;
-    else    if(state == S_RD_DATA && (dht11_fall == 1'b1 ||
-                                            dht11_rise == 1'b1))
-        cnt_us <=  21'b0;
-    else    if(cnt_us_en == 1'b1)
-        cnt_us <=  cnt_us +   1'b1;
-    else
-        cnt_us <=  21'b0;
-
 //bit_cnt：读出数据bit位数计数器
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
@@ -140,102 +127,112 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 //状态机状态跳转
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            state   <=  S_WAIT_1S   ;
-            cnt_us_en   <=  1'b1    ;
-            cnt_low <=  1'b0        ;
-        end
+        state   <=  S_WAIT_1S   ;
     else
         case(state)
         S_WAIT_1S:
             if(cnt_us == T_1S_DATA) //上电1s后跳入起始状态
-                begin
-                    state   <=  S_LOW_18MS  ;
-                    cnt_us_en   <=  1'b0    ;
-                end
+                state   <=  S_LOW_18MS  ;
             else
-                begin
-                    state   <=  S_WAIT_1S   ;
-                    cnt_us_en   <=  1'b1    ;
-                end
+                state   <=  S_WAIT_1S   ;
         S_LOW_18MS:
             if(cnt_us == T_18MS_DATA)
-                begin
-                    state   <=  S_DLY1     ;
-                    cnt_us_en   <=  1'b0   ;
-                end
+                state   <=  S_DLY1     ;
             else
-                begin
-                    state   <=  S_LOW_18MS  ;
-                    cnt_us_en   <=  1'b1    ;
-                end
+                state   <=  S_LOW_18MS  ;
         S_DLY1:
             if(cnt_us == 10)    //等待10us后进入下一状态
-                begin
-                    state   <=  S_REPLY     ;
-                    cnt_us_en   <=  1'b0    ;
-                end
+                state   <=  S_REPLY     ;
             else
-                begin
-                    state   <=  S_DLY1     ;
-                    cnt_us_en   <=  1'b1   ;
-                end
+                state   <=  S_DLY1     ;
         S_REPLY:  //上升沿到来且低电平保持时间大于70us，则跳转到下一状态
             if(dht11_rise == 1'b1 && cnt_low >= 70)
+                state   <=  S_DLY2     ;
+                 //若1ms后，dht11还没响应，则回去继续发送起始信号
+            else    if(cnt_us >= 1000)
+                state   <=  S_LOW_18MS ;
+            else
+                state   <=  S_REPLY    ;
+        S_DLY2: //下降沿到来且计数器值大于70us，则跳转到下一状态
+            if(dht11_fall == 1'b1 && cnt_us >= 70)
+                state   <=  S_RD_DATA   ;
+            else
+                state       <=  S_DLY2  ;
+        S_RD_DATA:  //读完数据后，回到起始状态
+            if(bit_cnt == 40 && dht11_rise == 1'b1)
+                state   <=  S_LOW_18MS  ;
+            else
+                state   <=  S_RD_DATA   ;
+        default:
+                state   <=  S_WAIT_1S   ;
+        endcase
+
+//各状态下的计数器赋值
+//cnt_us:每到一个新的状态就让该计数器重新计数
+always@(posedge clk_1us or  negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+        begin
+            cnt_low <=  7'd0      ;
+            cnt_us   <=  21'd0    ;
+        end
+    else
+        case(state)
+        S_WAIT_1S:
+            if(cnt_us == T_1S_DATA) 
+                cnt_us   <=  21'd0  ;
+            else
+                cnt_us   <=  cnt_us + 1'b1;
+        S_LOW_18MS:
+            if(cnt_us == T_18MS_DATA)
+                cnt_us   <=  21'd0  ;
+            else
+                cnt_us   <=  cnt_us + 1'b1;
+        S_DLY1:
+            if(cnt_us == 10)
+                cnt_us   <=  21'd0  ;
+            else
+                cnt_us   <=  cnt_us + 1'b1;
+        S_REPLY:
+            if(dht11_rise == 1'b1 && cnt_low >= 70)
                 begin
-                    state   <=  S_DLY2     ;
-                    cnt_us_en   <=  1'b0   ;
-                    cnt_low <=  1'b0       ;
+                    cnt_low <=  7'd0    ;
+                    cnt_us   <=  21'd0  ;
                 end
             //当dht11发送低电平回应时，计算其低电平的持续时间
             else    if(dht11 == 1'b0)
                 begin
-                    cnt_low <=  cnt_low + 1'b1  ;
-                    state   <=  S_REPLY         ;
-                    cnt_us_en   <=  1'b1        ;
+                    cnt_low  <=  cnt_low + 1'b1 ;
+                    cnt_us   <=  cnt_us + 1'b1  ;
                 end
             //若1ms后，dht11还没响应，则回去继续发送起始信号
             else    if(cnt_us >= 1000)
                 begin
-                    state   <=  S_LOW_18MS ;
-                    cnt_us_en   <=  1'b0   ;
+                    cnt_low <=  7'd0   ;
+                    cnt_us  <=  21'd0  ;
                 end
             else
                 begin
-                    state   <=  S_REPLY    ;
-                    cnt_us_en   <=  1'b1   ;
+                    cnt_low <=  cnt_low        ;
+                    cnt_us  <=  cnt_us + 1'b1  ;
                 end
-        S_DLY2: //下降沿到来且计数器值大于70us，则跳转到下一状态
+        S_DLY2:
             if(dht11_fall == 1'b1 && cnt_us >= 70)
-                begin
-                    state   <=  S_RD_DATA   ;
-                    cnt_us_en   <=  1'b0    ;
-                end
+                cnt_us   <=  21'd0  ;
             else
-                begin
-                    state       <=  S_DLY2  ;
-                    cnt_us_en   <=  1'b1    ;
-                end
-        S_RD_DATA:  //读完数据后，回到起始状态
-            if(bit_cnt == 40 && dht11_rise == 1'b1)
-                begin
-                    state   <=  S_LOW_18MS  ;
-                    cnt_us_en   <=  1'b0    ;
-                end
+                cnt_us   <=  cnt_us + 1'b1;
+        S_RD_DATA:
+            if(dht11_fall == 1'b1 || dht11_rise == 1'b1)
+                cnt_us   <=  21'd0  ;
             else
-                begin
-                    state   <=  S_RD_DATA   ;
-                    cnt_us_en   <=  1'b1    ;
-                end
+                cnt_us   <=  cnt_us + 1'b1;
         default:
             begin
-                state   <=  S_WAIT_1S   ;
-                cnt_us_en   <=  1'b1    ;
-                cnt_low <=  1'b0        ;
+                cnt_low  <=  7'd0   ;
+                cnt_us   <=  21'd0  ;
             end
         endcase
 
-//状态机状态赋值
+//各状态下的单总线赋值
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         begin

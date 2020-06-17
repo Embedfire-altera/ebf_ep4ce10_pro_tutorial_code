@@ -1,4 +1,4 @@
-Fitter Status : Successful - Wed Jun 10 14:44:12 2020
+Fitter Status : Successful - Wed Jun 17 14:37:34 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : rtc
 Top-level Entity Name : rtc
@@ -6,7 +6,7 @@ Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
 Total logic elements : 339 / 10,320 ( 3 % )
-    Total combinational functions : 291 / 10,320 ( 3 % )
+    Total combinational functions : 292 / 10,320 ( 3 % )
     Dedicated logic registers : 205 / 10,320 ( 2 % )
 Total registers : 205
 Total pins : 9 / 180 ( 5 % )

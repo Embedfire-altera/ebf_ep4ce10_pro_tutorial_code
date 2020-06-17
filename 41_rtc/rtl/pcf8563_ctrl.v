@@ -19,7 +19,7 @@
 
 module  pcf8563_ctrl 
 #(
-    parameter   TIME_INIT = 48'h19_09_07_16_00_00
+    parameter   TIME_INIT = 48'h20_06_08_08_00_00
 )
 (
     input   wire            sys_clk     ,   //系统时钟，频率50MHz
@@ -91,177 +91,108 @@ always@(posedge sys_clk or  negedge sys_rst_n)
     else
         data_out    <=  {year,month,day};
 
+//cnt_wait:状态机跳转到一个新的状态时计数器归0，其余时候一直计数
+always@(posedge i2c_clk or  negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+        cnt_wait    <=  13'd0;
+    else    if((state==S_WAIT && cnt_wait==CNT_WAIT_8MS) || 
+              (state==INIT_SEC && i2c_end==1'b1) || (state==INIT_MIN 
+              && i2c_end==1'b1) || (state==INIT_HOUR && i2c_end==1'b1)
+              || (state==INIT_DAY && i2c_end==1'b1) || (state==INIT_MON
+              && i2c_end == 1'b1) || (state==INIT_YEAR && i2c_end==1'b1)
+              || (state==RD_SEC && i2c_end==1'b1) || (state==RD_MIN && 
+              i2c_end==1'b1) || (state==RD_HOUR && i2c_end==1'b1) || 
+              (state==RD_DAY && i2c_end==1'b1) || (state==RD_MON && 
+              i2c_end==1'b1) || (state==RD_YEAR && i2c_end==1'b1))
+        cnt_wait    <=  13'd0;
+    else
+        cnt_wait    <=  cnt_wait + 1'b1;
+
 //状态机状态跳转
 always@(posedge i2c_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            state   <=  S_WAIT;
-            cnt_wait    <=  13'd0;
-        end
-    //状态机跳转到下一个状态时计数器归0，在当前状态一直计数
+        state   <=  S_WAIT;
     else    case(state)
     //上电等待8ms后跳转到系统配置状态
         S_WAIT:
             if(cnt_wait == CNT_WAIT_8MS)
-                begin
-                    state       <=  INIT_SEC;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  INIT_SEC;
             else
-                begin
-                    state       <=  S_WAIT;
-                    cnt_wait    <=  cnt_wait + 1'b1;
-                end
+                state       <=  S_WAIT;
     //初始化秒状态：初始化秒后（i2c_end == 1'b1），跳转到下一状态
         INIT_SEC:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  INIT_MIN;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  INIT_MIN;
             else
-                begin
-                    state       <=  INIT_SEC;
-                    cnt_wait    <=  cnt_wait+1;
-                end
+                state       <=  INIT_SEC;
     //初始化分状态：初始化分后（i2c_end == 1'b1），跳转到下一状态
         INIT_MIN:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  INIT_HOUR ;
-                    cnt_wait    <=  13'd0      ;
-                end
+                state       <=  INIT_HOUR ;
             else
-                begin
-                    state       <=  INIT_MIN       ;
-                    cnt_wait    <=  cnt_wait + 1'b1 ;
-                end
-                    
+                state       <=  INIT_MIN       ;
     //初始化时状态：初始化时后（i2c_end == 1'b1），跳转到下一状态
         INIT_HOUR:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  INIT_DAY;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  INIT_DAY;
             else
-                begin
-                    state       <=  INIT_HOUR       ;
-                    cnt_wait    <=  cnt_wait + 1'b1 ;
-                end
+                state       <=  INIT_HOUR       ;
     //初始化日状态：初始化日后（i2c_end == 1'b1），跳转到下一状态
         INIT_DAY:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  INIT_MON;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  INIT_MON;
             else
-                begin
-                    state       <=  INIT_DAY       ;
-                    cnt_wait    <=  cnt_wait + 1'b1 ;
-                end
+                state       <=  INIT_DAY       ;
     //初始化月状态：初始化月后（i2c_end == 1'b1），跳转到下一状态
         INIT_MON:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  INIT_YEAR;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  INIT_YEAR;
             else
-                begin
-                    state       <=  INIT_MON;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  INIT_MON;
     //初始化年状态：初始化年后（i2c_end == 1'b1），跳转到下一状态
         INIT_YEAR:
             if(i2c_end == 1)
-                begin
-                    state   <=  RD_SEC;
-                    cnt_wait    <=  13'd0;
-                end
+                state   <=  RD_SEC;
             else
-                begin
-                    state       <=  INIT_YEAR;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  INIT_YEAR;
     //读秒状态：读取完秒数据后，跳转到下一状态
         RD_SEC:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_MIN;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  RD_MIN;
             else
-                begin
-                    state       <=  RD_SEC;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_SEC;
     //读分状态：读取完分数据后，跳转到下一状态
         RD_MIN:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_HOUR;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  RD_HOUR;
             else
-                begin
-                    state       <=  RD_MIN;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_MIN;
     //读时状态：读取完小时数据后，跳转到下一状态
         RD_HOUR:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_DAY;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  RD_DAY;
             else
-                begin
-                    state       <=  RD_HOUR;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_HOUR;
     //读日状态：读取完日数据后，跳转到下一状态
         RD_DAY:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_MON;
-                    cnt_wait    <=  13'd0;
-                end
+                state       <=  RD_MON;
             else
-                begin
-                    state       <=  RD_DAY;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_DAY;
     //读月状态：读取完月数据后，跳转到下一状态
         RD_MON:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_YEAR;
-                    cnt_wait    <=  13'd0  ;
-                end
+                state       <=  RD_YEAR;
             else
-                begin
-                    state       <=  RD_MON;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_MON;
     //读年状态：读取完年数据后，跳转回读秒状态开始下一轮数据读取
         RD_YEAR:
             if(i2c_end == 1'b1)
-                begin
-                    state       <=  RD_SEC;
-                    cnt_wait    <=  13'd0 ;
-                end
+                state       <=  RD_SEC;
             else
-                begin
-                    state       <=  RD_YEAR;
-                    cnt_wait    <=  cnt_wait +  1'b1;
-                end
+                state       <=  RD_YEAR;
         default:
-            begin
-                state       <=  S_WAIT;
-                cnt_wait    <=  13'd0    ;
-            end
+            state       <=  S_WAIT;
     endcase
         
 //各状态下的信号赋值
