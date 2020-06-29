@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed Jun 10 14:37:21 2020
+Analysis & Synthesis Status : Successful - Mon Jun 29 19:59:49 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : eeprom_byte_rd_wr
 Top-level Entity Name : eeprom_byte_rd_wr
 Family : Cyclone IV E
-Total logic elements : 604
-    Total combinational functions : 601
-    Dedicated logic registers : 278
-Total registers : 278
+Total logic elements : 582
+    Total combinational functions : 542
+    Dedicated logic registers : 370
+Total registers : 370
 Total pins : 10
 Total virtual pins : 0
 Total memory bits : 2,048

@@ -11,7 +11,7 @@
 // Revision      : V1.0
 // Additional Comments:
 // 
-// 实验平台: 野火_征途Pro_FPGA开发板
+// 实验平台: 野火_征途系列FPGA开发板
 // 公司    : http://www.embedfire.com
 // 论坛    : http://www.firebbs.cn
 // 淘宝    : https://fire-stm32.taobao.com

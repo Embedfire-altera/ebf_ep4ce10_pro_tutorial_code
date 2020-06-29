@@ -72,6 +72,7 @@ set_location_assignment PIN_B1 -to shcp
 set_location_assignment PIN_K9 -to stcp
 set_location_assignment PIN_E1 -to sys_clk
 set_location_assignment PIN_M15 -to sys_rst_n
+set_global_assignment -name VERILOG_FILE ../rtl/bcd_8421.v
 set_global_assignment -name VERILOG_FILE ../sim/tb_top_seg_595.v
 set_global_assignment -name VERILOG_FILE ../rtl/top_seg_595.v
 set_global_assignment -name VERILOG_FILE ../rtl/seg_dynamic.v

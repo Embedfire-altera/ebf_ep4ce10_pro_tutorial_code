@@ -79,6 +79,7 @@ set_location_assignment PIN_L11 -to oe
 set_location_assignment PIN_R1 -to ds
 
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name VERILOG_FILE ../rtl/bcd_8421.v
 set_global_assignment -name VERILOG_FILE ../sim/tb_eeprom_byte_rd_wr.v
 set_global_assignment -name QIP_FILE ip_core/fifo_data/fifo_data.qip
 set_global_assignment -name VERILOG_FILE ../rtl/seg_dynamic.v

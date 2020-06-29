@@ -1,21 +1,22 @@
 `timescale  1ns/1ns
 ////////////////////////////////////////////////////////////////////////
 // Author        : EmbedFire
-// Create Date   : 2019/07/11
+// Create Date   : 2019/11/28
 // Module Name   : hc595_ctrl
-// Project Name  : seg_595_static
+// Project Name  : top_infrared_rcv
 // Target Devices: Altera EP4CE10F17C8N
 // Tool Versions : Quartus 13.0
 // Description   : 595控制模块
-//
+// 
 // Revision      : V1.0
 // Additional Comments:
 // 
-// 实验平台: 野火_征途Pro_FPGA开发板
+// 实验平台: 野火_征途系列FPGA开发板
 // 公司    : http://www.embedfire.com
 // 论坛    : http://www.firebbs.cn
 // 淘宝    : https://fire-stm32.taobao.com
 ////////////////////////////////////////////////////////////////////////
+
 module  hc595_ctrl
 (
     input   wire            sys_clk     ,   //系统时钟，频率50MHz

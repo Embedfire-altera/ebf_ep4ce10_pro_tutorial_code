@@ -75,17 +75,10 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name VERILOG_FILE ../rtl/dig_volt.v
-set_global_assignment -name VERILOG_FILE ../rtl/adc.v
-set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/seg_dynamic.v
-set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/seg_595_dynamic.v
-set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/hc595_ctrl.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
-set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
-set_global_assignment -name CDF_FILE output_files/Chain1.cdf
 set_global_assignment -name SLD_FILE "F:/GitLib/Altera/EP4CE10F17C8/ZT_Pro/A/4_base_code/23_dig_volt/project/output_files/stp1_auto_stripped.stp"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_dig_volt -section_id eda_simulation
@@ -94,4 +87,12 @@ set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_dig_volt
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_dig_volt
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_dig_volt -section_id tb_dig_volt
 set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_dig_volt.v -section_id tb_dig_volt
+set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/bcd_8421.v
+set_global_assignment -name VERILOG_FILE ../rtl/dig_volt.v
+set_global_assignment -name VERILOG_FILE ../rtl/adc.v
+set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/seg_dynamic.v
+set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/seg_595_dynamic.v
+set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/hc595_ctrl.v
+set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name CDF_FILE output_files/Chain1.cdf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

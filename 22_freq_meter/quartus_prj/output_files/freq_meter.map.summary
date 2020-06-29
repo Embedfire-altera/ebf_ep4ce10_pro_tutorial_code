@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed Jun 10 14:34:09 2020
+Analysis & Synthesis Status : Successful - Mon Jun 29 19:52:53 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : freq_meter
 Top-level Entity Name : freq_meter
 Family : Cyclone IV E
-Total logic elements : 5,433
-    Total combinational functions : 5,332
-    Dedicated logic registers : 293
-Total registers : 293
+Total logic elements : 3,613
+    Total combinational functions : 3,464
+    Dedicated logic registers : 372
+Total registers : 372
 Total pins : 8
 Total virtual pins : 0
 Total memory bits : 0

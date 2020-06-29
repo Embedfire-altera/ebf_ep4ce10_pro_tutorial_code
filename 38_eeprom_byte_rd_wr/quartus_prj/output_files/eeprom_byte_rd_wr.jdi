@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="3f39b8eab8feb38b95ca"/>
+    <hash md5_digest_80b="ad12071c3239fb052e26"/>
   </project>
   <file_info>
     <file device="EP4CE10F17C8" path="eeprom_byte_rd_wr.sof" usercode="0xFFFFFFFF"/>

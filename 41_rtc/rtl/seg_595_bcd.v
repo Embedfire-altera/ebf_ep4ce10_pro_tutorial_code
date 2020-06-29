@@ -21,7 +21,7 @@ module  seg_595_bcd
 (
     input   wire            sys_clk     , //系统时钟，频率50MHz
     input   wire            sys_rst_n   , //复位信号，低有效
-    input   wire    [23:0]  num         , //数码管要显示的bcd码数值
+    input   wire    [23:0]  data_bcd    , //数码管要显示的bcd码数值
     input   wire    [5:0]   point       , //小数点显示,高电平有效
     input   wire            seg_en      , //数码管使能信号，高电平有效
 
@@ -48,7 +48,7 @@ seg_bcd_disp    seg_bcd_disp_inst
 (
     .sys_clk     (sys_clk  ),   //系统时钟，频率50MHz
     .sys_rst_n   (sys_rst_n),   //复位信号，低有效
-    .num         (num      ),   //数码管要显示的值
+    .data_bcd    (data_bcd ),   //数码管要显示的值
     .point       (point    ),   //小数点显示,高电平有效
     .seg_en      (seg_en   ),   //数码管使能信号，高电平有效
 

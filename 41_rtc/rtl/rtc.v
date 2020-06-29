@@ -84,7 +84,7 @@ seg_595_bcd     seg_595_bcd_inst
 (
     .sys_clk     (sys_clk  ), //系统时钟，频率50MHz
     .sys_rst_n   (sys_rst_n), //复位信号，低有效
-    .num         (data_out ), //数码管要显示的bcd码数值
+    .data_bcd    (data_out ), //数码管要显示的bcd码数值
     .point       (6'b010100), //小数点显示,高电平有效
     .seg_en      (1'b1     ), //数码管使能信号，高电平有效
 

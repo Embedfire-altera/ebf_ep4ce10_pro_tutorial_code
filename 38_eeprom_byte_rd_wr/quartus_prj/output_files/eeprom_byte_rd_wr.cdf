@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE10F17) Path("F:/GitLib/Altera/EP4CE10F17C8/ebf_ep4ce10_tutorial_code/38_eeprom_byte_rd_wr/quartus_prj/output_files/") File("eeprom_byte_rd_wr.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE10F17) Path("E:/Altera/EP4CE10/ebf_ep4ce10_pro_tutorial_code/38_eeprom_byte_rd_wr/quartus_prj/output_files/") File("eeprom_byte_rd_wr.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

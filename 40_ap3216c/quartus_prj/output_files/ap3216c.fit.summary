@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Jun 17 14:35:38 2020
+Fitter Status : Successful - Mon Jun 29 20:17:39 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : ap3216c
 Top-level Entity Name : ap3216c
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 846 / 10,320 ( 8 % )
-    Total combinational functions : 821 / 10,320 ( 8 % )
-    Dedicated logic registers : 207 / 10,320 ( 2 % )
-Total registers : 207
+Total logic elements : 663 / 10,320 ( 6 % )
+    Total combinational functions : 611 / 10,320 ( 6 % )
+    Dedicated logic registers : 297 / 10,320 ( 3 % )
+Total registers : 297
 Total pins : 9 / 180 ( 5 % )
 Total virtual pins : 0
 Total memory bits : 0 / 423,936 ( 0 % )

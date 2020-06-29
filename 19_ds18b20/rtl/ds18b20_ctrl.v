@@ -271,24 +271,26 @@ always@(posedge clk_1us or  negedge sys_rst_n)
     else
         data_tmp    <=  data_tmp;
 
-//温度判断输出温度及符号位
+//温度判断，输出温度
 always@(posedge clk_1us or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            sign    <=  1'b0;
-            data    <=  20'b0;
-        end
+        data    <=  20'b0;
     else    if(data_tmp[15] == 1'b0 && state == S_RD_TEMP &&
                             cnt_1us == 20'd60 && bit_cnt == 4'd15)
-        begin
-            sign    <=  1'b0;
-            data    <=  data_tmp[10:0];
-        end
+        data    <=  data_tmp[10:0];
     else    if(data_tmp[15] == 1'b1 && state == S_RD_TEMP &&
                             cnt_1us == 20'd60 && bit_cnt == 4'd15)
-        begin
-            sign    <=  1'b1;
-            data    <=  ~data_tmp[10:0] + 1'b1;
-        end
+        data    <=  ~data_tmp[10:0] + 1'b1;
+
+//温度判断，输出符号位
+always@(posedge clk_1us or  negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+        sign    <=  1'b0;
+    else    if(data_tmp[15] == 1'b0 && state == S_RD_TEMP &&
+                            cnt_1us == 20'd60 && bit_cnt == 4'd15)
+        sign    <=  1'b0;
+    else    if(data_tmp[15] == 1'b1 && state == S_RD_TEMP &&
+                            cnt_1us == 20'd60 && bit_cnt == 4'd15)
+        sign    <=  1'b1;
 
 endmodule 

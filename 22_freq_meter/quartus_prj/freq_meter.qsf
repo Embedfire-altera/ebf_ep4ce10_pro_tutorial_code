@@ -74,6 +74,7 @@ set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_freq_mete
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id tb_freq_meter
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_freq_meter -section_id tb_freq_meter
 set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_freq_meter.v -section_id tb_freq_meter
+set_global_assignment -name VERILOG_FILE ../rtl/seg_595_dynamic/bcd_8421.v
 set_global_assignment -name VERILOG_FILE ../sim/tb_freq_meter.v
 set_global_assignment -name QIP_FILE ip_core/clk_test_gen/clk_test_gen.qip
 set_global_assignment -name QIP_FILE ip_core/clk_gen/clk_gen.qip

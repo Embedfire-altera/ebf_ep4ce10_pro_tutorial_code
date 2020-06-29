@@ -11,7 +11,7 @@
 // Revision      : V1.0
 // Additional Comments:
 // 
-// 实验平台: 野火_征途Pro_FPGA开发板
+// 实验平台: 野火_征途系列FPGA开发板
 // 公司    : http://www.embedfire.com
 // 论坛    : http://www.firebbs.cn
 // 淘宝    : https://fire-stm32.taobao.com
@@ -56,7 +56,6 @@ wire            ifr_in_fall ;   //检测红外信号的下降沿
 reg         infrared_in_d1  ;   //对infrared_in信号打一拍
 reg         infrared_in_d2  ;   //对infrared_in信号打两拍
 reg [18:0]  cnt             ;   //计数器
-reg         cnt_en          ;   //计数器使能信号
 reg         flag_0_56ms     ;   //0.56ms计数完成标志信号
 reg         flag_1_69ms     ;   //1.69ms计数完成标志信号
 reg         flag_2_25ms     ;   //2.25ms计数完成标志信号
@@ -88,14 +87,18 @@ always@(posedge sys_clk or  negedge sys_rst_n)
             infrared_in_d2  <=  infrared_in_d1;
         end
 
-//cnt：cnt_en为1时计数，为0时清0
-always@(posedge sys_clk or  negedge sys_rst_n)
+//cnt
+always@(posedge    sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        cnt <=  19'b0;
-    else    if(cnt_en == 1'b1)
-        cnt <=  cnt + 1'b1;
+        cnt <=  19'd0;
+    else    if(state==IDLE || (state==S_T9 && ifr_in_rise==1'b1 &&
+        flag_9ms==1'b1) || (state==S_JUDGE && ifr_in_fall==1'b1 &&
+       (flag_2_25ms==1'b1 || flag_4_5ms==1'b1)) || (state==S_IFR_DATA &&
+       ifr_in_rise==1'b1 && flag_0_56ms==1'b1) || (state==S_IFR_DATA &&
+       ifr_in_fall==1'b1 && (flag_0_56ms==1'b1 || flag_1_69ms==1'b1)))
+        cnt <=  19'd0;
     else
-        cnt <=  1'b0;
+        cnt <=  cnt + 1;
 
 //flag_0_56ms：计数到0.56ms范围拉高标志信号
 always@(posedge sys_clk or  negedge sys_rst_n)
@@ -142,64 +145,40 @@ always@(posedge sys_clk or  negedge sys_rst_n)
     else
         flag_9ms <=  1'b0;
 
-//状态机：状态跳转即计数器计数
+//状态机：状态跳转
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        begin
-            state   <=  IDLE;
-            cnt_en  <=  1'b0;
-        end
+        state   <=  IDLE;
     else
         case(state)
-    //若检测到红外信号下降沿到来,计数器开始计数并跳转到S_T9状态
+    //若检测到红外信号下降沿到来跳转到S_T9状态
         IDLE:
             if(ifr_in_fall == 1'b1)
-                begin
-                    cnt_en  <=  1'b1;
-                    state   <=  S_T9;
-                end
+                state   <=  S_T9;
             else    //若没检测到红外信号的下降沿，则让其保持在IDLE状态
-                begin
-                    state   <=  IDLE;
-                    cnt_en  <=  1'b0;
-                end
+                state   <=  IDLE;
         S_T9:   //若检测到红外信号上升沿到来，则判断flag_9ms是否为1
-                //若检测到时间接近9ms，则跳转到S_judje状态同时计数器清零
+                //若检测到时间接近9ms，则跳转到S_judje状态
             if(ifr_in_rise == 1'b1)
-                if(flag_9ms ==  1'b1)
-                    begin
-                        state   <=  S_JUDGE;
-                        cnt_en  <=  1'b0;
-                    end
-                else    //若低电平保持时间不符合协议时间 ，则回到IDLE状态
+                if(flag_9ms ==  1'b1) 
+                    state   <=  S_JUDGE;
+                else    //若低电平保持时间不符合协议时间，则回到IDLE状态
                     state   <=  IDLE;
             else
-                begin
-                    state   <=  S_T9; //跳转到这个状态之后计数器开始计数
-                    cnt_en  <=  1'b1;
-                end
+                state   <=  S_T9;
         S_JUDGE:  //若检测到红外信号下降沿到来，则判断flag_2_25ms是否为1
-                  //若检测到时间接近2.25ms，则跳转重复码状态同时计数器清零
+                  //若检测到时间接近2.25ms，则跳转重复码状态
             if(ifr_in_fall == 1'b1)
-                if(flag_2_25ms == 1'b1)
-                    begin
-                        state   <=  S_REPEAT;
-                        cnt_en  <=  1'b0;
-                    end
+                if(flag_2_25ms == 1'b1) 
+                    state   <=  S_REPEAT;
                 //若flag_2_25ms为0，则判断flag_4_5ms是否为1
-                //若检测到时间接近4.5ms，则跳转接收数据状态同时计数器清零
-                else    if(flag_4_5ms == 1'b1)
-                    begin
-                        state   <=  S_IFR_DATA;
-                        cnt_en  <=  1'b0;
-                    end
+                //若检测到时间接近4.5ms，则跳转接收数据状态
+                else    if(ifr_in_fall == 1'b1 && flag_4_5ms == 1'b1)
+                    state   <=  S_IFR_DATA;
                 else
                     state   <=  IDLE;
             else
-                begin
-                    state   <=  S_JUDGE;
-                    cnt_en  <=  1'b1;   //在该状态下计数器开始计数
-                end
+                state   <=  S_JUDGE;
         S_IFR_DATA:
             //若上升沿到来，低电平保持时间不满足编码协议，则回到空闲状态
             if(ifr_in_rise == 1'b1 && flag_0_56ms == 1'b0)
@@ -211,13 +190,6 @@ always@(posedge sys_clk or  negedge sys_rst_n)
             //数据接收完毕之后回到空闲状态，等待下一个指令的到来
             else    if(data_end ==  1'b1)
                 state   <=  IDLE;
-            else    if(ifr_in_rise == 1'b1 && flag_0_56ms == 1'b1)
-                cnt_en  <=  1'b0;
-            else    if(ifr_in_fall == 1'b1 && (flag_0_56ms == 1'b1 ||
-                                                    flag_1_69ms == 1'b1))
-                cnt_en  <=  1'b0;
-            else
-                cnt_en  <=  1'b1;
         S_REPEAT:
             /*若上升沿到来，无论时间是否到了0.56ms，
             状态机都跳回IDLE状态等待下一数据码或重复码的到来*/
@@ -226,10 +198,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
             else
                 state   <=  S_REPEAT;
         default:
-            begin
                 state   <=  IDLE;
-                cnt_en  <=  1'b0;
-            end
         endcase
 
 //data_tmp

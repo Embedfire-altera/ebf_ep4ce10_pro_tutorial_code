@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Jun 10 14:36:13 2020
+Fitter Status : Successful - Mon Jun 29 19:57:47 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : dig_volt
 Top-level Entity Name : dig_volt
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 2,095 / 10,320 ( 20 % )
-    Total combinational functions : 2,093 / 10,320 ( 20 % )
-    Dedicated logic registers : 120 / 10,320 ( 1 % )
-Total registers : 120
+Total logic elements : 1,308 / 10,320 ( 13 % )
+    Total combinational functions : 1,276 / 10,320 ( 12 % )
+    Dedicated logic registers : 203 / 10,320 ( 2 % )
+Total registers : 203
 Total pins : 15 / 180 ( 8 % )
 Total virtual pins : 0
 Total memory bits : 0 / 423,936 ( 0 % )

@@ -11,7 +11,7 @@
 // Revision      : V1.0
 // Additional Comments:
 // 
-// 实验平台: 野火_征途Pro_FPGA开发板
+// 实验平台: 野火_征途系列FPGA开发板
 // 公司    : http://www.embedfire.com
 // 论坛    : http://www.firebbs.cn
 // 淘宝    : https://fire-stm32.taobao.com
@@ -38,6 +38,7 @@ wire    repeat_en_rise  ;   //重复码使能信号上升沿
 //reg   define
 reg         repeat_en_d1;   //重复码使能信号打一拍
 reg         repeat_en_d2;   //重复码使能信号打两拍
+reg         cnt_en      ;   //计数器使能信号
 reg [21:0]  cnt         ;   //计数器
 
 //********************************************************************//
@@ -60,18 +61,25 @@ always@(posedge sys_clk or  negedge sys_rst_n)
             repeat_en_d2    <=  repeat_en_d1;
         end
 
-//当重复码使能信号上升沿来到，让计数器从2500_000~0计数
+//当重复码使能信号上升沿来到，拉高计数器使能信号，计到50ms后拉低
+always@(posedge sys_clk or  negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+            cnt_en <=  1'b0;
+    else    if(cnt == CNT_MAX - 1)
+            cnt_en <=  1'b0;
+    else    if(repeat_en_rise == 1'b1)
+            cnt_en <=  1'b1;
+            
+//当计数器使能信号为高时让计数器开始计数，为低时计数器清零
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
             cnt <=  22'b0;
-    else    if(repeat_en_rise == 1'b1)
-            cnt <=  CNT_MAX;
-    else    if(cnt >    1'b0)
-            cnt <=  cnt - 1'b1;
+    else    if(cnt_en == 1'b1)
+            cnt <=  cnt + 1;
     else
-            cnt <=  1'b0;
+            cnt <=  22'b0;
 
-//当计数器大于0时，点亮led灯，也就是当使能信号到来，led灯会亮0.05s
+//当计数器大于0时，点亮led灯，也就是当使能信号到来，led灯会亮50ms
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         led <=  1'b1;

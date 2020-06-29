@@ -16,7 +16,7 @@
 // 论坛    : http://www.firebbs.cn
 // 淘宝    : https://fire-stm32.taobao.com
 ////////////////////////////////////////////////////////////////////////
-
+`timescale  1ns/1ns
 module  tb_top_seg_595();
 
 //********************************************************************//
@@ -49,9 +49,8 @@ initial
 always  #10 sys_clk <=  ~sys_clk;
 
 //重新定义参数值，缩短仿真时间
-defparam  top_seg_595_inst.seg_595_dynamic_inst.seg_dynamic_inst.
-                                                 CNT_1K_MAX = 10;
-defparam  top_seg_595_inst.data_gen_inst.CNT_100MS_MAX    =   40;
+defparam  top_seg_595_inst.seg_595_dynamic_inst.seg_dynamic_inst.CNT_MAX=19;
+defparam  top_seg_595_inst.data_gen_inst.CNT_MAX    =   49;
 
 //********************************************************************//
 //*************************** Instantiation **************************//

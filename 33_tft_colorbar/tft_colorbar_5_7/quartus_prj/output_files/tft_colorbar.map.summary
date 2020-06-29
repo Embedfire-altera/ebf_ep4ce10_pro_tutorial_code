@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Jun 23 10:50:31 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : tft_colorbar
+Top-level Entity Name : tft_colorbar
+Family : Cyclone IV E
+Total logic elements : 126
+    Total combinational functions : 125
+    Dedicated logic registers : 30
+Total registers : 30
+Total pins : 23
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
