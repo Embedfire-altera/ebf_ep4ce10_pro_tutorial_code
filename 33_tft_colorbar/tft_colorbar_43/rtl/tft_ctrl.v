@@ -43,6 +43,7 @@ parameter H_SYNC    =   10'd41  ,   //行同步
           H_VALID   =   10'd480 ,   //行有效数据
           H_FRONT   =   10'd2   ,   //行时序前沿
           H_TOTAL   =   10'd525 ;   //行扫描周期
+
 parameter V_SYNC    =   10'd10  ,   //场同步
           V_BACK    =   10'd2   ,   //场时序后沿
           V_VALID   =   10'd272 ,   //场有效数据

@@ -1,12 +1,12 @@
-Fitter Status : Successful - Tue Jun 23 10:50:38 2020
+Fitter Status : Successful - Wed Jul 01 09:34:04 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : tft_colorbar
 Top-level Entity Name : tft_colorbar
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 126 / 10,320 ( 1 % )
-    Total combinational functions : 126 / 10,320 ( 1 % )
+Total logic elements : 123 / 10,320 ( 1 % )
+    Total combinational functions : 123 / 10,320 ( 1 % )
     Dedicated logic registers : 30 / 10,320 ( < 1 % )
 Total registers : 30
 Total pins : 23 / 180 ( 13 % )

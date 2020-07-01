@@ -25,12 +25,12 @@ module  tft_ctrl
 
     output  wire    [10:0]   pix_x       ,   //输出TFT有效显示区域像素点X轴坐标
     output  wire    [10:0]   pix_y       ,   //输出TFT有效显示区域像素点Y轴坐标
-    output  wire    [15:0]  rgb_tft     ,   //TFT显示数据
-    output  wire            hsync       ,   //TFT行同步信号
-    output  wire            vsync       ,   //TFT场同步信号
-    output  wire            tft_clk     ,   //TFT像素时钟
-    output  wire            tft_de      ,   //TFT数据使能
-    output  wire            tft_bl          //TFT背光信号
+    output  wire    [15:0]   rgb_tft     ,   //TFT显示数据
+    output  wire             hsync       ,   //TFT行同步信号
+    output  wire             vsync       ,   //TFT场同步信号
+    output  wire             tft_clk     ,   //TFT像素时钟
+    output  wire             tft_de      ,   //TFT数据使能
+    output  wire             tft_bl          //TFT背光信号
 );
 
 //********************************************************************//
@@ -41,9 +41,9 @@ module  tft_ctrl
 parameter H_SYNC    =   11'd1    ,   //行同步
           H_BACK    =   11'd46   ,   //行时序后沿
           H_VALID   =   11'd800  ,   //行有效数据
-          H_FRONT   =   11'd22  ,   //行时序前沿
-          H_TOTAL   =   11'd869 ;   //行扫描周期
-          
+          H_FRONT   =   11'd210  ,   //行时序前沿
+          H_TOTAL   =   11'd1057 ;   //行扫描周期
+
 parameter V_SYNC    =   11'd1    ,   //场同步
           V_BACK    =   11'd23   ,   //场时序后沿
           V_VALID   =   11'd480  ,   //场有效数据

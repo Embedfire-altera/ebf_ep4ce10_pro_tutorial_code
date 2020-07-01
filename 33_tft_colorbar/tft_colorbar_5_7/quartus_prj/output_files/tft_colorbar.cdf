@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE10F17) Path("C:/Users/Administrator/Desktop/27_tft_colorbar/quartus_prj/output_files/") File("tft_colorbar.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE10F17) Path("E:/Altera/EP4CE10/ebf_ep4ce10_pro_tutorial_code/33_tft_colorbar/tft_colorbar_5_7/quartus_prj/output_files/") File("tft_colorbar.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
