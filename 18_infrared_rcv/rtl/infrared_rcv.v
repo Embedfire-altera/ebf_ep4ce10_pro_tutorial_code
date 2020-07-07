@@ -64,15 +64,14 @@ reg         flag_9ms        ;   //0.56ms计数完成标志信号
 reg [4:0]   state           ;   //状态机状态
 reg [5:0]   data_cnt        ;   //数据计数器
 reg [31:0]  data_tmp        ;   //数据寄存器
-reg         data_end        ;   //数据接收完成信号
 
 //********************************************************************//
 //******************************* Main Code **************************//
 //********************************************************************//
 
 //检测红外信号的上升沿和下降沿
-assign  ifr_in_rise =   (~infrared_in_d2) & (infrared_in_d1)    ;
-assign  ifr_in_fall =   (infrared_in_d2)  & (~infrared_in_d1)   ;
+assign  ifr_in_rise = (infrared_in_d2 == 1'b0) & (infrared_in_d1 == 1'b1) ;
+assign  ifr_in_fall = (infrared_in_d2 == 1'b1) & (infrared_in_d1 == 1'b0) ;
 
 //对infrared_in信号打拍
 always@(posedge sys_clk or  negedge sys_rst_n)
@@ -88,23 +87,34 @@ always@(posedge sys_clk or  negedge sys_rst_n)
         end
 
 //cnt
-always@(posedge    sys_clk or  negedge sys_rst_n)
+always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt <=  19'd0;
-    else    if(state==IDLE || (state==S_T9 && ifr_in_rise==1'b1 &&
-        flag_9ms==1'b1) || (state==S_JUDGE && ifr_in_fall==1'b1 &&
-       (flag_2_25ms==1'b1 || flag_4_5ms==1'b1)) || (state==S_IFR_DATA &&
-       ifr_in_rise==1'b1 && flag_0_56ms==1'b1) || (state==S_IFR_DATA &&
-       ifr_in_fall==1'b1 && (flag_0_56ms==1'b1 || flag_1_69ms==1'b1)))
-        cnt <=  19'd0;
     else
-        cnt <=  cnt + 1;
+        case(state)
+            IDLE:   cnt <=  19'd0;
+            S_T9:   if((ifr_in_rise==1'b1) && (flag_9ms==1'b1))
+                        cnt <=  19'd0;
+                    else
+                        cnt <=  cnt + 1;
+            S_JUDGE:if((ifr_in_fall==1'b1) && (flag_2_25ms==1'b1 || flag_4_5ms==1'b1))
+                        cnt <=  19'd0;
+                    else
+                        cnt <=  cnt + 1;
+            S_IFR_DATA: if((flag_0_56ms == 1'b1) && (ifr_in_rise==1'b1))
+                            cnt <=  19'd0;
+                        else    if(((flag_0_56ms==1'b1) || (flag_1_69ms==1'b1)) && (ifr_in_fall==1'b1))
+                            cnt <=  19'd0;
+                        else
+                            cnt <=  cnt + 1;
+            default:cnt <=  19'd0;
+        endcase
 
 //flag_0_56ms：计数到0.56ms范围拉高标志信号
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         flag_0_56ms <=  1'b0;
-    else    if(cnt >= CNT_0_56MS_L && cnt <= CNT_0_56MS_H)
+    else    if((state == S_IFR_DATA) && (cnt >= CNT_0_56MS_L) && (cnt <= CNT_0_56MS_H))
         flag_0_56ms <=  1'b1;
     else
         flag_0_56ms <=  1'b0;
@@ -113,7 +123,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         flag_1_69ms <=  1'b0;
-    else    if(cnt >= CNT_1_69MS_L && cnt <= CNT_1_69MS_H)
+    else    if((state == S_IFR_DATA) && (cnt >= CNT_1_69MS_L) && (cnt <= CNT_1_69MS_H))
         flag_1_69ms <=  1'b1;
     else
         flag_1_69ms <=  1'b0;
@@ -122,7 +132,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         flag_2_25ms <=  1'b0;
-    else    if(cnt >= CNT_2_25MS_L && cnt <= CNT_2_25MS_H)
+    else    if((state == S_JUDGE) && (cnt >= CNT_2_25MS_L) && (cnt <= CNT_2_25MS_H))
         flag_2_25ms <=  1'b1;
     else
         flag_2_25ms <=  1'b0;
@@ -131,7 +141,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         flag_4_5ms <=  1'b0;
-    else    if(cnt >= CNT_4_5MS_L && cnt <= CNT_4_5MS_H)
+    else    if((state == S_JUDGE) && (cnt >= CNT_4_5MS_L) && (cnt <= CNT_4_5MS_H))
         flag_4_5ms <=  1'b1;
     else
         flag_4_5ms <=  1'b0;
@@ -140,7 +150,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         flag_9ms <=  1'b0;
-    else    if(cnt >= CNT_9MS_L && cnt <= CNT_9MS_H)
+    else    if((state == S_T9) && (cnt >= CNT_9MS_L) && (cnt <= CNT_9MS_H))
         flag_9ms <=  1'b1;
     else
         flag_9ms <=  1'b0;
@@ -159,24 +169,20 @@ always@(posedge sys_clk or  negedge sys_rst_n)
                 state   <=  IDLE;
         S_T9:   //若检测到红外信号上升沿到来，则判断flag_9ms是否为1
                 //若检测到时间接近9ms，则跳转到S_judje状态
-            if(ifr_in_rise == 1'b1)
-                if(flag_9ms ==  1'b1) 
-                    state   <=  S_JUDGE;
-                else    //若低电平保持时间不符合协议时间，则回到IDLE状态
-                    state   <=  IDLE;
+            if((ifr_in_rise == 1'b1) && (flag_9ms ==  1'b1))
+                state   <=  S_JUDGE;
+            else    if((ifr_in_rise == 1'b1) && (flag_9ms ==  1'b0))
+                state   <=  IDLE;
             else
                 state   <=  S_T9;
         S_JUDGE:  //若检测到红外信号下降沿到来，则判断flag_2_25ms是否为1
                   //若检测到时间接近2.25ms，则跳转重复码状态
-            if(ifr_in_fall == 1'b1)
-                if(flag_2_25ms == 1'b1) 
-                    state   <=  S_REPEAT;
-                //若flag_2_25ms为0，则判断flag_4_5ms是否为1
-                //若检测到时间接近4.5ms，则跳转接收数据状态
-                else    if(ifr_in_fall == 1'b1 && flag_4_5ms == 1'b1)
-                    state   <=  S_IFR_DATA;
-                else
-                    state   <=  IDLE;
+            if((ifr_in_fall == 1'b1) && (flag_2_25ms == 1'b1))
+                state   <=  S_REPEAT;
+            else    if((ifr_in_fall == 1'b1) && (flag_4_5ms == 1'b1))
+                state   <=  S_IFR_DATA;
+            else    if((ifr_in_fall == 1'b1) && (flag_2_25ms == 1'b0) && (flag_4_5ms == 1'b0))
+                state   <=  IDLE;
             else
                 state   <=  S_JUDGE;
         S_IFR_DATA:
@@ -188,7 +194,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
                                                     flag_1_69ms == 1'b0))
                 state   <=  IDLE;
             //数据接收完毕之后回到空闲状态，等待下一个指令的到来
-            else    if(data_end ==  1'b1)
+            else    if(ifr_in_rise == 1'b1 && data_cnt == 6'd32)
                 state   <=  IDLE;
         S_REPEAT:
             /*若上升沿到来，无论时间是否到了0.56ms，
@@ -213,15 +219,6 @@ always@(posedge sys_clk or  negedge sys_rst_n)
         data_tmp[data_cnt]  <=  1'b1;
     else
         data_tmp    <=  data_tmp;
-
-//data_end
-always@(posedge sys_clk or  negedge sys_rst_n)
-    if(sys_rst_n == 1'b0)
-        data_end    <=  1'b0;
-    else    if(ifr_in_rise == 1'b1 && data_cnt == 6'd32)
-        data_end    <=  1'b1;
-    else
-        data_end    <=  1'b0;
 
 //data_cnt
 always@(posedge sys_clk or  negedge sys_rst_n)

@@ -35,13 +35,11 @@ reg     sys_clk     ;
 reg     sys_rst_n   ;
 reg     infrared_in ;
 
-integer i;
-
 //********************************************************************//
 //***************************** Main Code ****************************//
 //********************************************************************//
 
-//对sys_clk,sys_rst_n,infrared_in赋初始值，infrared_in给数据帧的值
+//对sys_clk,sys_rst_n,infrared_in赋值
 initial
     begin
         sys_clk     =   1'b1;
@@ -49,64 +47,121 @@ initial
         infrared_in <=  1'b1;
         #100
         sys_rst_n   <=  1'b1;
+//引导码
         #1000
+        infrared_in <=  1'b0; #9000000
+        infrared_in <=  1'b1; #4500000
+//地址码（发送地址码8’h99）
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//地址反码（地址反码为8’h66）
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据码（发送数据码8’h22）
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据反码（数据反码为8’hdd）
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据0
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #560000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//数据1
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #1690000
+//重复码
+        infrared_in <=  1'b0; #560000
+        infrared_in <=  1'b1; #42000000
+        infrared_in <=  1'b0; #9000000
+        infrared_in <=  1'b1; #2250000
+        infrared_in <=  1'b0; #560000
         infrared_in <=  1'b1;
-        send_data(16'h6699,8'h22);
-        #60000000
-        $stop   ;
     end
 
 //clk:产生时钟
 always  #10 sys_clk <=  ~sys_clk;
-
-//定义1和0
-task    bit_send;
-    input   one_bit;
-    begin
-        infrared_in <= 0;
-        #560000
-        infrared_in <= 1;
-        if(one_bit == 1)
-        #1690000;
-        else
-            #560000;
-    end
-endtask
-
-//产生红外信号
-task    send_data;
-        input   [15:0]  addr;
-        input   [7:0]   data;
-        begin
-            infrared_in <=  0;
-            #9000000
-            infrared_in <=  1;
-            #4500000
-            for(i=0;i<=15;i=i+1)
-                begin
-                    bit_send(addr[i]);
-                end
-            for(i=0;i<=7;i=i+1)
-                begin
-                    bit_send(data[i]);
-                end
-            for(i=0;i<=7;i=i+1)
-                begin
-                    bit_send(~data[i]);
-                end
-            infrared_in = 0;
-            #560000;
-            infrared_in = 1;
-            #85000000;
-            infrared_in = 0;
-            #9000000
-            infrared_in = 1;
-            #2250000
-            infrared_in = 0;
-            #560000
-            infrared_in = 1;
-        end
-endtask
 
 //********************************************************************//
 //*************************** Instantiation **************************//
