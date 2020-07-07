@@ -70,8 +70,8 @@ reg [31:0]  data_tmp        ;   //数据寄存器
 //********************************************************************//
 
 //检测红外信号的上升沿和下降沿
-assign  ifr_in_rise = (infrared_in_d2 == 1'b0) & (infrared_in_d1 == 1'b1) ;
-assign  ifr_in_fall = (infrared_in_d2 == 1'b1) & (infrared_in_d1 == 1'b0) ;
+assign  ifr_in_rise = (~infrared_in_d2) & (infrared_in_d1) ;
+assign  ifr_in_fall = (infrared_in_d2) & (~infrared_in_d1) ;
 
 //对infrared_in信号打拍
 always@(posedge sys_clk or  negedge sys_rst_n)
