@@ -1,3 +1,5 @@
+clc;                    %清除命令行命令
+clear all;              %清除工作区变量,释放内存空间
 F1=1;                   %信号频率
 Fs=2^12;                %采样频率
 P1=0;                   %信号初始相位
@@ -18,13 +20,13 @@ fprintf(fild, '%s\n\n','DATA_RADIX=UNS;');  %数据格式
 fprintf(fild, '%s\t','CONTENT');            %地址
 fprintf(fild, '%s\n','BEGIN');              %开始
 for i = 1:N
-    s2(i) = round(s(i));    %对小数四舍五入以取整
-    if s2(i) <0             %负1强制置零
-        s2(i) = 0
+    s0(i) = round(s(i));    %对小数四舍五入以取整
+    if s0(i) <0             %负1强制置零
+        s0(i) = 0
     end
     fprintf(fild, '\t%g\t',i-1);    %地址编码
     fprintf(fild, '%s\t',':');      %冒号
-    fprintf(fild, '%d',s2(i));      %数据写入
+    fprintf(fild, '%d',s0(i));      %数据写入
     fprintf(fild, '%s\n',';');      %分号，换行
 end
 fprintf(fild, '%s\n','END;');       %结束

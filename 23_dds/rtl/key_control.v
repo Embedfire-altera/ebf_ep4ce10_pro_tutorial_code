@@ -23,7 +23,7 @@ module  key_control
     input   wire            sys_rst_n   ,   //复位信号,低电平有效
     input   wire    [3:0]   key         ,   //输入4位按键
 
-    output  wire    [3:0]   wave_select     //输出波形选择
+    output  reg     [3:0]   wave_select     //输出波形选择
 );
 
 //********************************************************************//
@@ -43,43 +43,23 @@ wire            key2    ;   //按键2
 wire            key1    ;   //按键1
 wire            key0    ;   //按键0
 
-//reg   define
-reg     [3:0]   wave    ;   //按键状态对应波形
-reg     [3:0]   key_state;  //按键状态
-
 //********************************************************************//
 //***************************** Main Code ****************************//
 //********************************************************************//
-//key_state:按键状态
-always@(posedge sys_clk or negedge sys_rst_n)
-    if(sys_rst_n == 1'b0)
-        key_state   <=  4'b0001;
-    else    if(key0 == 1'b1)
-        key_state   <=  4'b0001;
-    else    if(key1 == 1'b1)
-        key_state   <=  4'b0010;
-    else    if(key2 == 1'b1)
-        key_state   <=  4'b0100;
-    else    if(key3 == 1'b1)
-        key_state   <=  4'b1000;
-    else
-        key_state   <=  key_state;
-
 //wave:按键状态对应波形
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        wave    <=  4'd0;
+        wave_select   <=  4'b0000;
+    else    if(key0 == 1'b1)
+        wave_select   <=  sin_wave;
+    else    if(key1 == 1'b1)
+        wave_select   <=  squ_wave;
+    else    if(key2 == 1'b1)
+        wave_select   <=  tri_wave;
+    else    if(key3 == 1'b1)
+        wave_select   <=  saw_wave;
     else
-        case(key_state)          //按键扫描
-            4'b0001:wave    <=  sin_wave;
-            4'b0010:wave    <=  squ_wave;
-            4'b0100:wave    <=  tri_wave;
-            4'b1000:wave    <=  saw_wave;
-            default:wave    <=  sin_wave;
-        endcase
-
-//wave_select:波形选择
-assign  wave_select =   wave;
+        wave_select   <=  wave_select;
 
 //********************************************************************//
 //*************************** Instantiation **************************//

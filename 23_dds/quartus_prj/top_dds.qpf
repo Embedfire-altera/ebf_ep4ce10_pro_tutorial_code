@@ -18,12 +18,12 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-# Date created = 10:52:16  February 26, 2020
+# Date created = 11:05:53  July 08, 2020
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "13.0"
-DATE = "10:52:16  February 26, 2020"
+DATE = "11:05:53  July 08, 2020"
 
 # Revisions
 

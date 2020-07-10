@@ -55,7 +55,10 @@ always@(posedge sys_clk or negedge sys_rst_n)
 //rom_addr:ROM读地址
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
-        rom_addr <= 14'd0;
+        begin
+            rom_addr        <=  14'd0;
+            rom_addr_reg    <=  11'd0;
+        end
     else
     case(wave_select)
         sin_wave:
