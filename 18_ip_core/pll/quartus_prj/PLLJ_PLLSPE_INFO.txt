@@ -1,0 +1,5 @@
+PLL_Name	pll_ip:pll_ip_inst|altpll:altpll_component|pll_ip_altpll:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+

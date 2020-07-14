@@ -1,0 +1,10 @@
+PLL_Name	clk_test_gen:clk_gen_test_inst|altpll:altpll_component|clk_test_gen_altpll:auto_generated|pll1
+PLLJITTER	9
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	freq_meter_calc:freq_meter_calc_inst|clk_gen:clk_gen_inst|altpll:altpll_component|clk_gen_altpll:auto_generated|pll1
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

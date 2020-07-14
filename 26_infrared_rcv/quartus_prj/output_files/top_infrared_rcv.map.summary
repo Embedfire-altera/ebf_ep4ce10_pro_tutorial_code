@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Jul 07 09:25:40 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : top_infrared_rcv
+Top-level Entity Name : top_infrared_rcv
+Family : Cyclone IV E
+Total logic elements : 442
+    Total combinational functions : 390
+    Dedicated logic registers : 250
+Total registers : 250
+Total pins : 8
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
