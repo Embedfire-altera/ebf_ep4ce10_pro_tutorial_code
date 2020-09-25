@@ -97,7 +97,7 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name QIP_FILE ip_core/rom/rom_wave.qip
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_key_control.v -section_id tb_key_control
 set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_dds.v -section_id tb_dds
 set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/tb_top_dds.v -section_id tb_top_dds
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

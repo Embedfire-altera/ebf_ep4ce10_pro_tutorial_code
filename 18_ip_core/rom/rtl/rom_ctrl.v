@@ -65,7 +65,7 @@ always@(posedge sys_clk or  negedge sys_rst_n)
 always@(posedge sys_clk or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt_200ms    <=  24'd0;
-    else    if(cnt_200ms == CNT_MAX)
+    else    if(cnt_200ms == CNT_MAX || addr_flag1 == 1'b1 || addr_flag2 == 1'b1)
         cnt_200ms   <=  24'd0;
     else
         cnt_200ms   <=  cnt_200ms + 1'b1;

@@ -3,59 +3,59 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -5.588
-TNS   : -148.404
+Slack : -4.748
+TNS   : -139.613
 
 Type  : Slow 1200mV 85C Model Setup 'audio_bclk'
-Slack : -4.618
-TNS   : -547.523
+Slack : -3.967
+TNS   : -547.628
 
 Type  : Slow 1200mV 85C Model Setup 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -2.116
-TNS   : -49.135
+Slack : -1.843
+TNS   : -48.373
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : -0.333
-TNS   : -0.333
+Slack : -0.345
+TNS   : -0.345
 
 Type  : Slow 1200mV 85C Model Hold 'audio_bclk'
-Slack : -1.065
-TNS   : -3.873
+Slack : -1.092
+TNS   : -3.970
 
 Type  : Slow 1200mV 85C Model Hold 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.431
-TNS   : -4.838
+Slack : -0.404
+TNS   : -4.903
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : -0.066
-TNS   : -0.066
+Slack : -0.054
+TNS   : -0.054
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 0.433
+Slack : 0.406
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -4.786
-TNS   : -646.135
+Slack : -5.066
+TNS   : -690.893
 
 Type  : Slow 1200mV 85C Model Recovery 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -3.185
-TNS   : -3.185
+Slack : -3.256
+TNS   : -3.256
 
 Type  : Slow 1200mV 85C Model Recovery 'audio_bclk'
-Slack : -2.443
-TNS   : -162.895
+Slack : -2.249
+TNS   : -166.118
 
 Type  : Slow 1200mV 85C Model Removal 'audio_bclk'
-Slack : 1.568
+Slack : 1.625
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 2.350
+Slack : 2.383
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 3.435
+Slack : 3.871
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'audio_bclk'
@@ -67,11 +67,11 @@ Slack : -1.487
 TNS   : -50.558
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.427
+Slack : 0.426
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 4.693
+Slack : 4.687
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
@@ -83,59 +83,59 @@ Slack : 9.934
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -5.035
-TNS   : -130.025
+Slack : -4.184
+TNS   : -122.408
 
 Type  : Slow 1200mV 0C Model Setup 'audio_bclk'
-Slack : -4.358
-TNS   : -498.384
+Slack : -3.667
+TNS   : -501.715
 
 Type  : Slow 1200mV 0C Model Setup 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -1.888
-TNS   : -42.333
+Slack : -1.588
+TNS   : -41.723
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : -0.135
-TNS   : -0.135
+Slack : -0.146
+TNS   : -0.146
 
 Type  : Slow 1200mV 0C Model Hold 'audio_bclk'
-Slack : -0.857
-TNS   : -2.806
+Slack : -0.936
+TNS   : -3.267
 
 Type  : Slow 1200mV 0C Model Hold 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.422
-TNS   : -4.465
+Slack : -0.378
+TNS   : -4.573
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : -0.184
-TNS   : -0.184
+Slack : -0.172
+TNS   : -0.172
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 0.359
+Slack : 0.380
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -4.183
-TNS   : -561.376
+Slack : -4.500
+TNS   : -605.827
 
 Type  : Slow 1200mV 0C Model Recovery 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -2.773
-TNS   : -2.773
+Slack : -2.847
+TNS   : -2.847
 
 Type  : Slow 1200mV 0C Model Recovery 'audio_bclk'
-Slack : -2.205
-TNS   : -143.918
+Slack : -2.001
+TNS   : -145.889
 
 Type  : Slow 1200mV 0C Model Removal 'audio_bclk'
-Slack : 1.412
+Slack : 1.437
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 2.090
+Slack : 2.130
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 2.995
+Slack : 3.380
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'audio_bclk'
@@ -147,11 +147,11 @@ Slack : -1.487
 TNS   : -50.558
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.354
+Slack : 0.372
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 4.661
+Slack : 4.667
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
@@ -163,75 +163,75 @@ Slack : 9.943
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -2.097
-TNS   : -52.431
+Slack : -1.656
+TNS   : -47.870
 
 Type  : Fast 1200mV 0C Model Setup 'audio_bclk'
-Slack : -1.604
-TNS   : -114.788
+Slack : -1.096
+TNS   : -106.070
 
 Type  : Fast 1200mV 0C Model Setup 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.315
-TNS   : -3.794
+Slack : -0.228
+TNS   : -3.319
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : -0.115
-TNS   : -0.115
+Slack : -0.122
+TNS   : -0.122
 
 Type  : Fast 1200mV 0C Model Hold 'audio_bclk'
-Slack : -0.752
-TNS   : -3.120
+Slack : -0.725
+TNS   : -3.184
 
 Type  : Fast 1200mV 0C Model Hold 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
 Slack : -0.288
-TNS   : -3.061
+TNS   : -3.007
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 0.117
+Slack : 0.124
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 0.176
+Slack : 0.146
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : -1.789
-TNS   : -238.358
+Slack : -1.921
+TNS   : -252.720
 
 Type  : Fast 1200mV 0C Model Recovery 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -1.235
-TNS   : -1.235
+Slack : -1.253
+TNS   : -1.253
 
 Type  : Fast 1200mV 0C Model Recovery 'audio_bclk'
-Slack : -0.555
-TNS   : -27.597
+Slack : -0.427
+TNS   : -25.081
 
 Type  : Fast 1200mV 0C Model Removal 'audio_bclk'
-Slack : 0.717
+Slack : 0.683
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 1.441
+Slack : 1.443
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 1.622
+Slack : 1.758
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'audio_bclk'
 Slack : -3.000
-TNS   : -257.866
+TNS   : -257.981
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
 Slack : -1.000
 TNS   : -34.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'wm8978_ctrl:wm8978_ctrl_inst|wm8978_cfg:wm8978_cfg_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.428
+Slack : 0.430
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 4.734
+Slack : 4.733
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk'

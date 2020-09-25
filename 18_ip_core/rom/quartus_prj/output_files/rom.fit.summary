@@ -1,14 +1,14 @@
-Fitter Status : Successful - Thu Jul 30 15:50:31 2020
+Fitter Status : Successful - Thu Jul 30 17:22:42 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : rom
 Top-level Entity Name : rom
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 331 / 10,320 ( 3 % )
-    Total combinational functions : 312 / 10,320 ( 3 % )
-    Dedicated logic registers : 218 / 10,320 ( 2 % )
-Total registers : 218
+Total logic elements : 330 / 10,320 ( 3 % )
+    Total combinational functions : 307 / 10,320 ( 3 % )
+    Dedicated logic registers : 223 / 10,320 ( 2 % )
+Total registers : 223
 Total pins : 8 / 180 ( 4 % )
 Total virtual pins : 0
 Total memory bits : 2,048 / 423,936 ( < 1 % )

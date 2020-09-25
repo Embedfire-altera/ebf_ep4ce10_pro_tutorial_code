@@ -53,7 +53,7 @@ always #10 sys_clk = ~sys_clk;
 
 //创建任务rx_byte，本次任务调用rx_bit任务，发送8次数据，分别为0~7
 task    rx_byte();  //因为不需要外部传递参数，所以括号中没有输入
-    integer	j;
+    integer j;
     for(j=0; j<8; j=j+1)    //调用8次rx_bit任务，每次发送的值从0变化7
         rx_bit(j);
 endtask
