@@ -1,11 +1,11 @@
-Fitter Status : Successful - Tue Aug 25 11:30:19 2020
+Fitter Status : Successful - Thu Mar 12 13:34:36 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : audio_record
 Top-level Entity Name : audio_record
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 965 / 10,320 ( 9 % )
+Total logic elements : 949 / 10,320 ( 9 % )
     Total combinational functions : 888 / 10,320 ( 9 % )
     Dedicated logic registers : 619 / 10,320 ( 6 % )
 Total registers : 619

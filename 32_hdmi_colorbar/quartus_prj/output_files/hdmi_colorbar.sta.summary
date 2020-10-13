@@ -3,11 +3,11 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 1.035
+Slack : 1.049
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 31.252
+Slack : 31.041
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
@@ -27,15 +27,15 @@ Slack : 9.934
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 19.718
+Slack : 19.716
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 1.205
+Slack : 1.227
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 31.675
+Slack : 31.471
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
@@ -55,22 +55,22 @@ Slack : 9.943
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 19.717
+Slack : 19.716
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
-Slack : 2.734
+Slack : 2.739
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 36.118
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.186
+Slack : 36.054
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[1]'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
 Slack : 0.187
 TNS   : 0.000
 
@@ -83,7 +83,7 @@ Slack : 9.594
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 19.797
+Slack : 19.796
 TNS   : 0.000
 
 ------------------------------------------------------------

@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE10F17) Path("F:/GitLib/Altera/EP4CE10F17C8/ZT_Pro/A/4_base_code/31_hdmi_colorbar/quartus_prj/output_files/") File("hdmi_colorbar.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE10F17) Path("G:/Desktop/FPGA/3.git/Altera/EP4CE10/ebf_ep4ce10_pro_tutorial_code/32_hdmi_colorbar/quartus_prj/output_files/") File("hdmi_colorbar.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

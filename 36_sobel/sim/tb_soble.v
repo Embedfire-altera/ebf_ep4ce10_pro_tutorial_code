@@ -81,8 +81,9 @@ task  rx_bit(input[7:0] data);  //data是data_mem[j]的值。
 endtask
 
 //重定义defparam,用于修改参数,缩短仿真时间
-defparam    sobel_inst.uart_rx_inst.CLK_FREQ    =   500000;
-defparam    sobel_inst.uart_tx_inst.CLK_FREQ    =   500000;
+defparam sobel_inst.uart_rx_inst.BAUD_CNT_END       =   52;
+defparam sobel_inst.uart_rx_inst.BAUD_CNT_END_HALF  =   26;
+defparam sobel_inst.uart_tx_inst.BAUD_CNT_END       =   52;
 
 //-------------sobel_inst-------------
 sobel   sobel_inst(

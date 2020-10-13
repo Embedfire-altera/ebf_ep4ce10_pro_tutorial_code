@@ -1,14 +1,14 @@
-Fitter Status : Successful - Thu Jun 18 13:38:00 2020
+Fitter Status : Successful - Tue Oct 13 11:47:32 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : ov5640_hdmi_1280x720
 Top-level Entity Name : ov5640_hdmi_1280x720
 Family : Cyclone IV E
 Device : EP4CE10F17C8
 Timing Models : Final
-Total logic elements : 1,564 / 10,320 ( 15 % )
-    Total combinational functions : 1,476 / 10,320 ( 14 % )
-    Dedicated logic registers : 650 / 10,320 ( 6 % )
-Total registers : 666
+Total logic elements : 1,554 / 10,320 ( 15 % )
+    Total combinational functions : 1,470 / 10,320 ( 14 % )
+    Dedicated logic registers : 644 / 10,320 ( 6 % )
+Total registers : 660
 Total pins : 64 / 180 ( 36 % )
 Total virtual pins : 0
 Total memory bits : 32,768 / 423,936 ( 8 % )
