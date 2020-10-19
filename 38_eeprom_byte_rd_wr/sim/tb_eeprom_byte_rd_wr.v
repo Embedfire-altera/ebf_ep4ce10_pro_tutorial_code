@@ -59,8 +59,8 @@ initial
 
 always  #10 clk = ~clk;
 
-defparam eeprom_byte_rd_wr_inst.key_wr_inst.MAX_20MS = 5;
-defparam eeprom_byte_rd_wr_inst.key_rd_inst.MAX_20MS = 5;
+defparam eeprom_byte_rd_wr_inst.key_wr_inst.CNT_MAX = 5;
+defparam eeprom_byte_rd_wr_inst.key_rd_inst.CNT_MAX = 5;
 defparam eeprom_byte_rd_wr_inst.i2c_rw_data_inst.CNT_WAIT_MAX = 1000;
 
 //-------------eeprom_byte_rd_wr_inst-------------

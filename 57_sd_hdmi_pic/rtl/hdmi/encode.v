@@ -80,7 +80,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
 
 //condition_1:条件1
 assign  condition_1 = ((data_in_n1 > 4'd4) || ((data_in_n1 == 4'd4)
-                        && (data_in_reg[0] == 1'b0)));
+                        && (data_in_reg[0] == 1'b1)));
 
 //q_m:第一阶段转换后的9bit数据
 assign q_m[0] = data_in_reg[0];

@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="89a6aee0d96f7cf32d47"/>
+    <hash md5_digest_80b="ae5182b3ee1ab9506442"/>
   </project>
   <file_info>
     <file device="EP4CE10F17C8" path="uart_sdram_hdmi_pic.sof" usercode="0xFFFFFFFF"/>

@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="87c6031cd2766466cc3b"/>
+    <hash md5_digest_80b="b448956040af597104db"/>
   </project>
   <file_info>
     <file device="EP4CE10F17C8" path="uart_sdram.sof" usercode="0xFFFFFFFF"/>
