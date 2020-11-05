@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed Oct 21 15:36:49 2020
+Analysis & Synthesis Status : Successful - Wed Oct 21 15:44:06 2020
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : ov5640_hdmi_1280x720
 Top-level Entity Name : ov5640_hdmi_1280x720
 Family : Cyclone IV E
-Total logic elements : 1,604
-    Total combinational functions : 1,474
-    Dedicated logic registers : 650
-Total registers : 666
+Total logic elements : 1,601
+    Total combinational functions : 1,468
+    Dedicated logic registers : 644
+Total registers : 660
 Total pins : 64
 Total virtual pins : 0
 Total memory bits : 32,768
