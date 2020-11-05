@@ -19,9 +19,9 @@
 
 module  tft_ctrl
 (
-    input   wire            tft_clk_9m  ,   //输入时钟,频率9MHz
-    input   wire            sys_rst_n   ,   //系统复位,低电平有效
-    input   wire    [15:0]  pix_data    ,   //待显示数据
+    input   wire             tft_clk_33m ,   //输入时钟,频率33MHz
+    input   wire             sys_rst_n   ,   //系统复位,低电平有效
+    input   wire    [15:0]   pix_data    ,   //待显示数据
 
     output  wire    [10:0]   pix_x       ,   //输出TFT有效显示区域像素点X轴坐标
     output  wire    [10:0]   pix_y       ,   //输出TFT有效显示区域像素点Y轴坐标
@@ -63,12 +63,12 @@ reg     [10:0]   cnt_v   ;   //场扫描计数器
 //********************************************************************//
 
 //tft_clk,tft_de,tft_bl：TFT像素时钟、数据使能、背光信号
-assign  tft_clk = tft_clk_9m    ;
+assign  tft_clk = tft_clk_33m    ;
 assign  tft_de  = rgb_valid     ;
 assign  tft_bl  = sys_rst_n     ;
 
 //cnt_h:行同步信号计数器
-always@(posedge tft_clk_9m or  negedge sys_rst_n)
+always@(posedge tft_clk_33m or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt_h   <=  11'd0   ;
     else    if(cnt_h == H_TOTAL - 1'd1)
@@ -80,7 +80,7 @@ always@(posedge tft_clk_9m or  negedge sys_rst_n)
 assign  hsync = (cnt_h  <=  H_SYNC - 1'd1) ? 1'b1 : 1'b0  ;
 
 //cnt_v:场同步信号计数器
-always@(posedge tft_clk_9m or  negedge sys_rst_n)
+always@(posedge tft_clk_33m or  negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         cnt_v   <=  11'd0 ;
     else    if((cnt_v == V_TOTAL - 1'd1) &&  (cnt_h == H_TOTAL-1'd1))

@@ -19,8 +19,8 @@
 
 module  tft_pic
 (
-    input   wire            tft_clk_9m  ,   //输入工作时钟,频率9MHz
-    input   wire            sys_rst_n   ,   //输入复位信号,低电平有效
+    input   wire            tft_clk_33m  ,   //输入工作时钟,频率33MHz
+    input   wire            sys_rst_n    ,   //输入复位信号,低电平有效
     input   wire    [10:0]   pix_x       ,   //输入TFT有效显示区域像素点X轴坐标
     input   wire    [10:0]   pix_y       ,   //输入TFT有效显示区域像素点Y轴坐标
 
@@ -51,7 +51,7 @@ parameter   RED     =   16'hF800,   //红色
 //********************************************************************//
 
 //pix_data:输出像素点色彩信息,根据当前像素点坐标指定当前像素点颜色数据
-always@(posedge tft_clk_9m or negedge sys_rst_n)
+always@(posedge tft_clk_33m or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         pix_data    <= 16'd0;
     else    if((pix_x >= 0) && (pix_x < (H_VALID/10)*1))
