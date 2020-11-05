@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Nov 04 17:13:13 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : uart_sdram_tft_pic
+Top-level Entity Name : uart_sdram_tft_pic
+Family : Cyclone IV E
+Device : EP4CE10F17C8
+Timing Models : Final
+Total logic elements : 689 / 10,320 ( 7 % )
+    Total combinational functions : 630 / 10,320 ( 6 % )
+    Dedicated logic registers : 441 / 10,320 ( 4 % )
+Total registers : 441
+Total pins : 63 / 180 ( 35 % )
+Total virtual pins : 0
+Total memory bits : 24,576 / 423,936 ( 6 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 1 / 2 ( 50 % )

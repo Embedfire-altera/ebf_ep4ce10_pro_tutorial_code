@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Nov 04 17:13:05 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : uart_sdram_tft_pic
+Top-level Entity Name : uart_sdram_tft_pic
+Family : Cyclone IV E
+Total logic elements : 745
+    Total combinational functions : 629
+    Dedicated logic registers : 441
+Total registers : 441
+Total pins : 63
+Total virtual pins : 0
+Total memory bits : 24,576
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

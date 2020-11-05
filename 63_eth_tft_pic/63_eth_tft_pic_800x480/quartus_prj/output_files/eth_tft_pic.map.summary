@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Nov 05 11:24:07 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : eth_tft_pic
+Top-level Entity Name : eth_tft_pic
+Family : Cyclone IV E
+Total logic elements : 1,070
+    Total combinational functions : 819
+    Dedicated logic registers : 624
+Total registers : 624
+Total pins : 68
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

@@ -1,0 +1,227 @@
+`timescale  1ns/1ns
+////////////////////////////////////////////////////////////////////////
+// Author        : EmbedFire
+// Create Date   : 2019/10/20
+// Module Name   : eth_tft_pic
+// Project Name  : eth_tft_pic
+// Target Devices: Altera EP4CE10F17C8N
+// Tool Versions : Quartus 13.0
+// Description   : 顶层模块
+// 
+// Revision      : V1.0
+// Additional Comments:
+// 
+// 实验平台: 野火_征途Pro_FPGA开发板
+// 公司    : http://www.embedfire.com
+// 论坛    : http://www.firebbs.cn
+// 淘宝    : https://fire-stm32.taobao.com
+////////////////////////////////////////////////////////////////////////
+
+module eth_tft_pic
+(
+    input   wire            sys_clk     ,   //系统时钟
+    input   wire            sys_rst_n   ,   //复位信号,低电平有效
+//Ethernet
+    input   wire            eth_rx_clk  ,   //PHY芯片接收数据时钟信号
+    input   wire            eth_rxdv_r    ,   //PHY芯片输入数据有效信号
+    input   wire    [1:0]   eth_rx_data_r ,   //PHY芯片输入数据
+    output  wire            eth_tx_en   ,   //PHY芯片输出数据有效信号
+    output  wire            eth_rst_n   ,   //PHY芯片复位信号,低电平有效
+//SDRAM
+    output  wire            sdram_clk   ,   //SDRAM芯片时钟
+    output  wire            sdram_cke   ,   //SDRAM时钟有效信号
+    output  wire            sdram_cs_n  ,   //SDRAM片选信号
+    output  wire            sdram_ras_n ,   //SDRAM行地址选通脉冲
+    output  wire            sdram_cas_n ,   //SDRAM列地址选通脉冲
+    output  wire            sdram_we_n  ,   //SDRAM写允许位
+    output  wire    [1:0]   sdram_ba    ,   //SDRAM的L-Bank地址线
+    output  wire    [12:0]  sdram_addr  ,   //SDRAM地址总线
+    output  wire    [1:0]   sdram_dqm   ,   //SDRAM数据掩码
+    inout   wire    [15:0]  sdram_dq    ,   //SDRAM数据总线
+//TFT
+    output  wire            tft_hs      ,   //输出行同步信号
+    output  wire            tft_vs      ,   //输出场同步信号
+    output  wire    [15:0]  tft_rgb     ,   //输出像素点色彩信息
+    output  wire            tft_clk     ,   //TFT显示屏时钟信号
+    output  wire            tft_de      ,   //TFT显示使能信号
+    output  wire            tft_bl          //TFT显示屏背光信号
+);
+
+//********************************************************************//
+//****************** Parameter and Internal Signal *******************//
+//********************************************************************//
+//parameter define
+parameter   BOARD_MAC   = 48'hFF_FF_FF_FF_FF_FF ;   //板卡MAC地址
+parameter   BOARD_IP    = 32'hFF_FF_FF_FF       ;   //板卡IP地址
+parameter   BOARD_PORT  = 16'd1234              ;   //板卡端口号
+parameter   PC_MAC      = 48'hE0_D5_5E_4A_DB_2D ;   //PC机MAC地址
+parameter   PC_IP       = 32'hC0_A8_64_02       ;   //PC机IP地址
+parameter   PC_PORT     = 16'd1234              ;   //PC机端口号
+
+
+
+parameter   H_VALID  =   24'd800;   //行有效数据
+parameter   V_VALID  =   24'd480;   //列有效数据
+
+//wire  define
+wire            clk_33m         ;   //33MHz
+wire            clk_100m        ;   //100MHz
+wire            clk_100m_shift  ;   //100MHz,做相位偏移处理
+wire            locked          ;   //时钟输出有效
+wire            rst_n           ;   //系统复位信号
+wire            sdram_init_done ;   //SDRAM完成初始化
+wire            rec_en_in       ;   //UDP接收有效数据使能
+wire    [31:0]  rec_data_in     ;   //UDP接收有效数据
+wire            wr_en           ;   //SDRAM写端口写使能
+wire    [15:0]  wr_data         ;   //SDRAM写端口写数据
+wire            rd_en           ;   //SDRAM读端口读使能
+wire    [15:0]  rd_data         ;   //SDRAM读端口读数据
+
+reg             mii_clk         ;
+wire            eth_rxdv        ;
+wire    [3:0]   eth_rx_data     ;
+
+
+//********************************************************************//
+//***************************** Main Code ****************************//
+//********************************************************************//
+//rst_n:/系统复位信号
+assign  rst_n = sys_rst_n & locked;
+
+always@(negedge eth_rx_clk or negedge sys_rst_n)
+    if(sys_rst_n == 1'b0)
+        mii_clk <=  1'b1;
+    else
+        mii_clk <=  ~mii_clk;
+
+//********************************************************************//
+//*************************** Instantiation **************************//
+//********************************************************************//
+
+//------------ clk_gen_inst -------------
+clk_gen clk_gen_inst
+(
+    .inclk0     (sys_clk        ),  //输入时钟
+    .areset     (~sys_rst_n     ),  //复位信号,高有效
+
+    .c0         (clk_33m        ),  //输出33MHz时钟
+    .c1         (clk_100m       ),  //输出100MHz时钟
+    .c2         (clk_100m_shift ),  //输出100MHz时钟,相位偏移
+    .locked     (locked         )   //时钟信号有效标志
+);
+
+//------------ rmii_to_mii_inst -------------
+rmii_to_mii rmii_to_mii_inst
+(
+    .eth_rmii_clk(eth_rx_clk    ),
+    .eth_mii_clk (mii_clk       ),
+    .sys_rst_n   (sys_rst_n     ),
+    .rx_dv       (eth_rxdv_r    ),
+    .rx_data     (eth_rx_data_r ),
+
+    .eth_rx_dv   (eth_rxdv      ),
+    .eth_rx_data (eth_rx_data   )
+);
+
+//------------ eth_udp_inst -------------
+eth_udp_mii
+#(
+    .BOARD_MAC      (BOARD_MAC      ),  //板卡MAC地址
+    .BOARD_IP       (BOARD_IP       ),  //板卡IP地址
+    .BOARD_PORT     (BOARD_PORT     ),  //板卡端口号
+    .PC_MAC         (PC_MAC         ),  //PC机MAC地址
+    .PC_IP          (PC_IP          ),  //PC机IP地址
+    .PC_PORT        (PC_PORT        )   //PC机端口号
+)
+eth_udp_mii_inst
+(
+    .eth_rx_clk     (mii_clk        ),  //PHY芯片接收数据时钟信号
+    .sys_rst_n      (rst_n          ),  //复位信号,低电平有效
+    .eth_rxdv       (eth_rxdv       ),  //PHY芯片输入数据有效信号
+    .eth_rx_data    (eth_rx_data    ),  //PHY芯片输入数据
+    .eth_tx_clk     (               ),  //PHY芯片发送数据时钟信号
+    .send_en        (               ),  //开始发送信号
+    .send_data      (               ),  //发送数据
+    .send_data_num  (               ),  //发送有效数据字节数
+
+    .send_end       (               ),  //单包数据发送完成信号
+    .read_data_req  (               ),  //读数据请求信号
+    .rec_end        (               ),  //单包数据接收完成信号
+    .rec_en         (rec_en_in      ),  //接收数据使能信号
+    .rec_data       (rec_data_in    ),  //接收数据
+    .rec_data_num   (               ),  //接收有效数据字节数
+    .eth_tx_en      (eth_tx_en      ),  //PHY芯片输出数据有效信号
+    .eth_tx_data    (               ),  //PHY芯片输出数据
+    .eth_rst_n      (eth_rst_n      )   //PHY芯片复位信号,低电平有效
+);
+
+//------------ data32_to_data16_inst -------------
+data32_to_data16    data32_to_data16_inst
+(
+    .sys_clk        (mii_clk ),   //系统时钟
+    .sys_rst_n      (rst_n      ),   //复位信号,低有效
+    .rec_en_in      (rec_en_in  ),   //输入32位数据使能信号
+    .rec_data_in    (rec_data_in),   //输入32位数据
+
+    .rec_en_out     (wr_en      ),   //输出16位数据使能信号
+    .rec_data_out   (wr_data    )    //输出16位数据
+);
+
+//------------- sdram_top_inst -------------
+sdram_top   sdram_top_inst
+(
+    .sys_clk            (clk_100m       ),  //sdram 控制器参考时钟
+    .clk_out            (clk_100m_shift ),  //用于输出的相位偏移时钟
+    .sys_rst_n          (rst_n          ),  //系统复位
+//用户写端口
+    .wr_fifo_wr_clk     (mii_clk        ),  //写端口FIFO: 写时钟
+    .wr_fifo_wr_req     (wr_en          ),  //写端口FIFO: 写使能
+    .wr_fifo_wr_data    (wr_data        ),  //写端口FIFO: 写数据
+    .sdram_wr_b_addr    (24'd0          ),  //写SDRAM的起始地址
+    .sdram_wr_e_addr    (H_VALID*V_VALID),  //写SDRAM的结束地址
+    .wr_burst_len       (10'd512        ),  //写SDRAM时的数据突发长度
+    .wr_rst             (~rst_n         ),  //写端口复位: 复位写地址,清空写FIFO
+//用户读端口
+    .rd_fifo_rd_clk     (clk_33m        ),  //读端口FIFO: 读时钟
+    .rd_fifo_rd_req     (rd_en          ),  //读端口FIFO: 读使能
+    .rd_fifo_rd_data    (rd_data        ),  //读端口FIFO: 读数据
+    .sdram_rd_b_addr    (24'd0          ),  //读SDRAM的起始地址
+    .sdram_rd_e_addr    (H_VALID*V_VALID),  //读SDRAM的结束地址
+    .rd_burst_len       (10'd512        ),  //从SDRAM中读数据时的突发长度
+    .rd_fifo_num        (               ),  //读fifo中的数据量
+    .rd_rst             (~rst_n         ),  //读端口复位: 复位读地址,清空读FIFO
+//用户控制端口
+    .read_valid         (1'b1           ),  //SDRAM 读使能
+    .pingpang_en        (1'b0           ),  //SDRAM 乒乓操作使能
+    .init_end           (sdram_init_done),  //SDRAM 初始化完成标志
+//SDRAM 芯片接口
+    .sdram_clk          (sdram_clk      ),  //SDRAM 芯片时钟
+    .sdram_cke          (sdram_cke      ),  //SDRAM 时钟有效
+    .sdram_cs_n         (sdram_cs_n     ),  //SDRAM 片选
+    .sdram_ras_n        (sdram_ras_n    ),  //SDRAM 行有效
+    .sdram_cas_n        (sdram_cas_n    ),  //SDRAM 列有效
+    .sdram_we_n         (sdram_we_n     ),  //SDRAM 写有效
+    .sdram_ba           (sdram_ba       ),  //SDRAM Bank地址
+    .sdram_addr         (sdram_addr     ),  //SDRAM 行/列地址
+    .sdram_dq           (sdram_dq       ),  //SDRAM 数据
+    .sdram_dqm          (sdram_dqm      )   //SDRAM 数据掩码
+);
+
+//------------ vga_ctrl_inst -------------
+tft_ctrl  tft_ctrl_inst
+(
+    .clk_33m     (clk_33m           ),  //输入时钟,频率33MHz
+    .sys_rst_n   (sdram_init_done   ),  //系统复位,低电平有效
+    .data_in     (rd_data           ),  //待显示数据
+
+    .data_req    (rd_en             ),  //数据请求信号
+    .rgb_tft     (tft_rgb           ),  //TFT显示数据
+    .hsync       (tft_hs            ),  //TFT行同步信号
+    .vsync       (tft_vs            ),  //TFT场同步信号
+    .tft_clk     (tft_clk           ),  //TFT像素时钟
+    .tft_de      (tft_de            ),  //TFT数据使能
+    .tft_bl      (tft_bl            )   //TFT背光信号
+);
+
+endmodule
+

@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Nov 04 17:08:14 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : tft_char
+Top-level Entity Name : tft_char
+Family : Cyclone IV E
+Device : EP4CE10F17C8
+Timing Models : Final
+Total logic elements : 842 / 10,320 ( 8 % )
+    Total combinational functions : 842 / 10,320 ( 8 % )
+    Dedicated logic registers : 24 / 10,320 ( < 1 % )
+Total registers : 24
+Total pins : 23 / 180 ( 13 % )
+Total virtual pins : 0
+Total memory bits : 0 / 423,936 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 1 / 2 ( 50 % )
