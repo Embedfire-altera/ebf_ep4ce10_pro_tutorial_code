@@ -95,9 +95,9 @@ set_global_assignment -name EDA_TEST_BENCH_FILE ../sim/M25P16_VG_V12/initmemory.
 set_global_assignment -name SLD_FILE "E:/GitLib/Altera/EP4CE10/base_code/10_spi_flash/spi_flash_write/spi_flash_seq_wr/quartus_prj/output_files/stp1_auto_stripped.stp"
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VERILOG_FILE ../sim/tb_spi_flash_seq_wr.v
 set_global_assignment -name VERILOG_FILE ../rtl/uart_tx.v
 set_global_assignment -name VERILOG_FILE ../rtl/uart_rx.v
 set_global_assignment -name VERILOG_FILE ../rtl/spi_flash_seq_wr.v
 set_global_assignment -name VERILOG_FILE ../rtl/flash_seq_wr_ctrl.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

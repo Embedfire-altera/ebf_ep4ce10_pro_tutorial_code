@@ -34,7 +34,7 @@ reg   [7:0]   data_mem [299:0] ;  //data_mem是一个存储器，相当于一个
 
 //读取sim文件夹下面的data.txt文件，并把读出的数据定义为data_mem
 initial
-  $readmemh("E:/GitLib/Altera/EP4CE10/base_code/10_spi_flash/spi_flash_write/spi_flash_seq_wr/sim/spi_flash.txt",data_mem);
+  $readmemh("E:/base_code/10_spi_flash/spi_flash_write/spi_flash_seq_wr/sim/spi_flash.txt",data_mem);
 
 
 //时钟、复位信号
@@ -83,9 +83,8 @@ task  rx_bit(input[7:0] data);  //data是data_mem[j]的值。
 endtask
 
 //重定义defparam,用于修改参数,缩短仿真时间
-defparam spi_flash_seq_wr_inst.uart_rx_inst.BAUD_CNT_END      = 52;
-defparam spi_flash_seq_wr_inst.uart_rx_inst.BAUD_CNT_END_HALF = 26;
-defparam spi_flash_seq_wr_inst.uart_tx_inst.BAUD_CNT_END      = 52;
+defparam spi_flash_seq_wr_inst.uart_rx_inst.CLK_FREQ    = 500000;
+defparam spi_flash_seq_wr_inst.uart_tx_inst.CLK_FREQ    = 500000;
 defparam memory.mem_access.initfile = "initmemory.txt";
 
 //-------------spi_flash_seq_wr_inst-------------

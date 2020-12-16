@@ -49,7 +49,8 @@ always  #10 clk <=  ~clk;
 
 defparam memory.mem_access.initfile = "initM25P16_test.txt";
 defparam spi_flash_read_inst.flash_read_ctrl_inst.CNT_WAIT_MAX = 1000;
-defparam spi_flash_read_inst.uart_tx_inst.BAUD_CNT_END = 10;
+defparam spi_flash_read_inst.uart_tx_inst.CLK_FREQ = 100000;
+
 //------------- spi_flash_read -------------
 spi_flash_read    spi_flash_read_inst(
     .sys_clk    (clk    ),  //input     sys_clk

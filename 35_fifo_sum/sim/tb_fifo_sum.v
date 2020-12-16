@@ -36,7 +36,7 @@ reg     [7:0]   data_men[2499:0]    ;
 //********************************************************************//
 //读取数据
 initial
-  $readmemh("E:/sources/fifo_sum/matlab/fifo_data.txt",data_men);
+   $readmemh("E:/sources/fifo_sum/matlab/fifo_data.txt",data_men);
 
 //生成时钟和复位信号
 initial
@@ -86,9 +86,8 @@ task  rx_bit(input[7:0] data);//data是data_men[j]的值。
 endtask
 
 //重定义defparam,用于修改参数
-defparam fifo_sum_inst.uart_rx_inst.BAUD_CNT_END      = 52  ;
-defparam fifo_sum_inst.uart_rx_inst.BAUD_CNT_END_HALF = 26  ;
-defparam fifo_sum_inst.uart_tx_inst.BAUD_CNT_END      = 52  ;
+defparam fifo_sum_inst.uart_rx_inst.CLK_FREQ    = 500000  ;
+defparam fifo_sum_inst.uart_tx_inst.CLK_FREQ    = 500000  ;
 
 //********************************************************************//
 //*************************** Instantiation **************************//

@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="198280e10783b8061820"/>
+    <hash md5_digest_80b="d85df76aaefcb344d5b3"/>
   </project>
   <file_info>
     <file device="EP4CE10F17C8" path="spi_flash_seq_wr.sof" usercode="0xFFFFFFFF"/>
