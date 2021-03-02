@@ -3,28 +3,28 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -4.026
-TNS   : -7.602
+Slack : -3.728
+TNS   : -7.282
 
 Type  : Slow 1200mV 85C Model Setup 'ov7725_pclk'
-Slack : -2.238
-TNS   : -99.216
+Slack : -2.402
+TNS   : -97.040
 
 Type  : Slow 1200mV 85C Model Setup 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -1.965
-TNS   : -52.235
+Slack : -1.964
+TNS   : -51.533
 
 Type  : Slow 1200mV 85C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : -0.145
 TNS   : -0.145
 
 Type  : Slow 1200mV 85C Model Hold 'ov7725_pclk'
-Slack : -1.280
-TNS   : -2.094
+Slack : -0.958
+TNS   : -1.351
 
 Type  : Slow 1200mV 85C Model Hold 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.618
-TNS   : -5.730
+Slack : -0.517
+TNS   : -4.845
 
 Type  : Slow 1200mV 85C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : -0.206
@@ -35,19 +35,19 @@ Slack : 0.406
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -3.028
-TNS   : -3.028
+Slack : -3.706
+TNS   : -3.706
 
 Type  : Slow 1200mV 85C Model Recovery 'ov7725_pclk'
-Slack : -2.234
-TNS   : -70.920
+Slack : -2.249
+TNS   : -69.746
 
 Type  : Slow 1200mV 85C Model Removal 'ov7725_pclk'
-Slack : -0.242
-TNS   : -4.376
+Slack : -0.247
+TNS   : -4.367
 
 Type  : Slow 1200mV 85C Model Removal 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 2.187
+Slack : 2.689
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ov7725_pclk'
@@ -59,11 +59,11 @@ Slack : -1.487
 TNS   : -52.045
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.415
+Slack : 0.478
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 3.706
+Slack : 3.704
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sys_clk'
@@ -75,51 +75,51 @@ Slack : 19.718
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -3.531
-TNS   : -6.587
+Slack : -3.266
+TNS   : -6.348
 
 Type  : Slow 1200mV 0C Model Setup 'ov7725_pclk'
-Slack : -2.019
-TNS   : -89.253
+Slack : -2.241
+TNS   : -86.577
 
 Type  : Slow 1200mV 0C Model Setup 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -1.703
-TNS   : -45.647
+Slack : -1.789
+TNS   : -45.170
 
 Type  : Slow 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : 0.047
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'ov7725_pclk'
-Slack : -1.094
-TNS   : -1.762
+Slack : -0.825
+TNS   : -1.092
 
 Type  : Slow 1200mV 0C Model Hold 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.562
-TNS   : -5.423
+Slack : -0.480
+TNS   : -4.794
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : -0.317
 TNS   : -0.317
 
 Type  : Slow 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.381
+Slack : 0.382
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -2.637
-TNS   : -2.637
+Slack : -3.328
+TNS   : -3.328
 
 Type  : Slow 1200mV 0C Model Recovery 'ov7725_pclk'
-Slack : -1.970
-TNS   : -62.541
+Slack : -1.993
+TNS   : -61.763
 
 Type  : Slow 1200mV 0C Model Removal 'ov7725_pclk'
-Slack : -0.106
-TNS   : -0.302
+Slack : -0.110
+TNS   : -0.940
 
 Type  : Slow 1200mV 0C Model Removal 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 1.950
+Slack : 2.463
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ov7725_pclk'
@@ -131,11 +131,11 @@ Slack : -1.487
 TNS   : -52.045
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.424
+Slack : 0.464
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 3.675
+Slack : 3.676
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sys_clk'
@@ -143,32 +143,32 @@ Slack : 9.943
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 19.716
+Slack : 19.717
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -1.395
-TNS   : -2.599
+Slack : -1.289
+TNS   : -2.495
 
 Type  : Fast 1200mV 0C Model Setup 'ov7725_pclk'
-Slack : -0.435
-TNS   : -8.820
+Slack : -0.492
+TNS   : -7.597
 
 Type  : Fast 1200mV 0C Model Setup 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.277
-TNS   : -3.762
+Slack : -0.216
+TNS   : -3.311
 
 Type  : Fast 1200mV 0C Model Setup 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : 0.045
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'ov7725_pclk'
-Slack : -0.815
-TNS   : -1.458
+Slack : -0.661
+TNS   : -1.151
 
 Type  : Fast 1200mV 0C Model Hold 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
-Slack : -0.390
-TNS   : -3.085
+Slack : -0.348
+TNS   : -2.845
 
 Type  : Fast 1200mV 0C Model Hold 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
 Slack : -0.051
@@ -179,35 +179,35 @@ Slack : 0.145
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : -1.148
-TNS   : -1.148
+Slack : -1.422
+TNS   : -1.422
 
 Type  : Fast 1200mV 0C Model Recovery 'ov7725_pclk'
-Slack : -0.707
-TNS   : -22.113
+Slack : -0.720
+TNS   : -21.703
 
 Type  : Fast 1200mV 0C Model Removal 'ov7725_pclk'
-Slack : -0.349
-TNS   : -9.508
+Slack : -0.354
+TNS   : -9.428
 
 Type  : Fast 1200mV 0C Model Removal 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 1.353
+Slack : 1.541
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ov7725_pclk'
 Slack : -3.000
-TNS   : -85.394
+TNS   : -85.329
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|i2c_clk'
 Slack : -1.000
 TNS   : -35.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ov7725_top:ov7725_top_inst|i2c_ctrl:i2c_ctrl_inst|cnt_i2c_clk[0]'
-Slack : 0.401
+Slack : 0.456
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 3.734
+Slack : 3.733
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk'
@@ -215,7 +215,7 @@ Slack : 9.594
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_gen_inst|altpll_component|auto_generated|pll1|clk[2]'
-Slack : 19.735
+Slack : 19.736
 TNS   : 0.000
 
 ------------------------------------------------------------

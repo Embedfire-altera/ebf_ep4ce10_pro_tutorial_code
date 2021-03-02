@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Fri Mar 27 14:56:57 2020
+Analysis & Synthesis Status : Successful - Tue Mar 02 09:37:42 2021
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : sd_hdmi_pic
 Top-level Entity Name : sd_hdmi_pic
 Family : Cyclone IV E
-Total logic elements : 1,543
-    Total combinational functions : 1,374
-    Dedicated logic registers : 880
-Total registers : 896
+Total logic elements : 1,537
+    Total combinational functions : 1,365
+    Dedicated logic registers : 874
+Total registers : 890
 Total pins : 55
 Total virtual pins : 0
 Total memory bits : 32,768
